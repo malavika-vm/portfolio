@@ -411,41 +411,33 @@ pages.about = () => `
   <div class="stagger s2" style="margin-top:36px">
     <div class="card" style="cursor:default">
       <div style="display:flex;gap:36px;flex-wrap:wrap;align-items:flex-start">
-        <!-- Photo placeholder -->
-        <div style="width:180px;height:220px;border-radius:14px;background:var(--cream);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0">
-          <span style="font-size:11px;color:var(--text-muted);letter-spacing:2px;text-transform:uppercase">Photo</span>
-        </div>
+        <img src="photo.jpg" alt="Malavika Mampally" style="width:200px;height:260px;border-radius:14px;object-fit:cover;object-position:center top;flex-shrink:0;border:1px solid #C4CCBE40" />
         <div style="flex:1;min-width:260px">
-          <h3 style="font-family:'Instrument Serif',serif;font-size:28px;color:var(--text);font-weight:400;margin-bottom:16px">
-            Malavika
+          <h3 style="font-family:'Instrument Serif',serif;font-size:28px;color:var(--text);font-weight:400;margin-bottom:4px">
+            Malavika Mampally
           </h3>
-          <p style="color:var(--text-mid);font-size:14px;line-height:1.8;margin-bottom:16px">
-            <!-- EDIT: Add your personal bio here -->
-            Statistician and data scientist with a background spanning applied statistics, actuarial science, and design. Currently completing an M.S. in Statistics, Analytics & Data Science at UNC Chapel Hill.
+          <p style="font-size:13px;color:var(--accent);font-weight:600;margin-bottom:16px">
+            Statistician · Data Scientist · Designer
+          </p>
+          <p style="color:var(--text-mid);font-size:14px;line-height:1.8;margin-bottom:14px">
+            Born and raised in Mumbai, now based in Chapel Hill, NC. I studied statistics because I genuinely find it fascinating — and then kept going until I had a bachelor's, a postgrad diploma (finished first in class), and a master's from UNC.
+          </p>
+          <p style="color:var(--text-mid);font-size:14px;line-height:1.8;margin-bottom:14px">
+            I've worked across healthcare analytics, AI research, insurance, and finance — always somewhere at the intersection of rigorous analysis and making the results actually make sense to people. I also design things. I've led design teams, built a digital magazine from scratch, and will always care about how something looks as much as how it works.
           </p>
           <p style="color:var(--text-mid);font-size:14px;line-height:1.8;margin-bottom:20px">
-            <!-- EDIT: Add more personal details -->
-            With over a decade of Carnatic music training, a founding role in community service, and experience leading design teams — I bring both analytical rigour and creative thinking to every problem.
+            Currently looking for roles in data science, analytics, or statistics where I can keep doing what I do best — finding patterns, building models, and telling the story in the numbers.
           </p>
           <div style="display:flex;gap:10px;flex-wrap:wrap">
-            <span class="course-tag">📍 Chapel Hill, NC</span>
-            <span class="course-tag">📧 your@email.com</span>
-            <span class="course-tag">🔗 LinkedIn</span>
-            <span class="course-tag">🔗 GitHub</span>
+            <a href="mailto:malavikamampally@gmail.com" class="course-tag" style="text-decoration:none;color:var(--text-mid)">📧 malavikamampally@gmail.com</a>
+            <a href="https://linkedin.com/in/malavikamampally" target="_blank" class="course-tag" style="text-decoration:none;color:var(--text-mid)">🔗 LinkedIn</a>
+            <a href="https://github.com/malavika-vm" target="_blank" class="course-tag" style="text-decoration:none;color:var(--text-mid)">🔗 GitHub</a>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="stagger s3" style="margin-top:24px">
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px">
-      <div class="highlight-box"><div class="highlight-num">5</div><div class="highlight-label">Institutions</div></div>
-      <div class="highlight-box"><div class="highlight-num">#1</div><div class="highlight-label">Valedictorian</div></div>
-      <div class="highlight-box"><div class="highlight-num">99</div><div class="highlight-label">Math Score</div></div>
-      <div class="highlight-box"><div class="highlight-num">10+</div><div class="highlight-label">Yrs Music</div></div>
-    </div>
-  </div>
 </div>
 `;
 
@@ -541,7 +533,7 @@ pages.education = () => {
 
 // EXPERIENCE
 pages.experience = () => `
-<div class="page" style="max-width:860px;margin:0 auto">
+<div class="page" style="max-width:900px;margin:0 auto">
   <div class="stagger s1">
     <div class="section-label">
       <span class="section-num">02</span><div class="section-line"></div><span class="section-name">Experience</span>
@@ -550,55 +542,145 @@ pages.experience = () => `
     <div class="title-accent"></div>
   </div>
 
-  <div style="margin-top:36px">
-    <!-- PLACEHOLDER: Add your work experiences below. Copy the pattern for each role. -->
+  <div style="margin-top:36px;display:grid;gap:14px">
 
-    <div class="card stagger s2" style="cursor:default;margin-bottom:14px">
+    <!-- 1. Lowtouch.ai -->
+    <div class="card stagger s2" style="cursor:default">
       <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px">
         <div>
-          <h3 style="font-family:'Instrument Serif',serif;font-size:22px;color:var(--text);font-weight:400">
-            <!-- EDIT: Job Title -->
-            Junior Engineering Research Associate
-          </h3>
-          <p style="font-size:13px;color:var(--accent);font-weight:600;margin-top:2px">
-            <!-- EDIT: Company -->
-            Highway Safety Research Center, UNC Chapel Hill
-          </p>
+          <h3 style="font-family:'Instrument Serif',serif;font-size:22px;color:var(--text);font-weight:400">Machine Learning Intern — Finance</h3>
+          <p style="font-size:13px;color:var(--accent);font-weight:600;margin-top:2px">Lowtouch.ai</p>
+          <p style="font-size:11px;color:var(--text-muted);margin-top:2px">Remote, United States</p>
         </div>
-        <span style="font-size:12px;color:var(--text-muted);font-weight:500">2024 – Present</span>
+        <span style="font-size:12px;color:var(--text-muted);font-weight:500;white-space:nowrap">Nov 2025 – Present</span>
       </div>
-      <p style="color:var(--text-mid);font-size:13px;line-height:1.7;margin-top:14px">
-        <!-- EDIT: Description -->
-        Add description of your role, responsibilities, and key achievements here.
-      </p>
+      <ul style="color:var(--text-mid);font-size:13px;line-height:1.8;margin-top:14px;padding-left:18px">
+        <li>Evaluating and refining predictive and retrieval-based models for financial-services workflows, focusing on accuracy, consistency, and robustness</li>
+        <li>Implementing structured data pipelines ensuring model outputs are traceable, auditable, and supported by documentation</li>
+        <li>Preprocessing large text-based datasets using Python and SQL, generating structured features and diagnostic reports</li>
+      </ul>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:14px">
+        <span class="course-tag">Python</span>
+        <span class="course-tag">SQL</span>
+        <span class="course-tag">ML Models</span>
+        <span class="course-tag">Financial Services</span>
+      </div>
+    </div>
+
+    <!-- 2. Society-Centered AI Lab -->
+    <div class="card stagger s3" style="cursor:default">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px">
+        <div>
+          <h3 style="font-family:'Instrument Serif',serif;font-size:22px;color:var(--text);font-weight:400">Statistical Research Associate — AI Research</h3>
+          <p style="font-size:13px;color:var(--accent);font-weight:600;margin-top:2px">Society-Centered AI Lab, School of Data Science & Society, UNC</p>
+        </div>
+        <span style="font-size:12px;color:var(--text-muted);font-weight:500;white-space:nowrap">Jan 2025 – Dec 2025</span>
+      </div>
+      <ul style="color:var(--text-mid);font-size:13px;line-height:1.8;margin-top:14px;padding-left:18px">
+        <li>Led large-scale LLM benchmarking study across 627 personas, running multivariable OLS and logistic regressions across five response variables and nine demographic predictors</li>
+        <li>Computed effect sizes (Cohen's d), odds ratios with 95% CIs, and Welch's t-tests to quantify distributional differences across subgroups</li>
+        <li>Performed A/B testing and created publication-quality visualizations in R and Python to surface bias patterns</li>
+        <li>Co-authored peer-reviewed paper on multilevel human-LLM alignment, published on <a href="https://arxiv.org/abs/2512.13142" target="_blank" style="color:var(--accent);font-weight:600;text-decoration:underline">arXiv</a></li>
+      </ul>
       <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:14px">
         <span class="course-tag">R</span>
-        <span class="course-tag">Machine Learning</span>
-        <span class="course-tag">Statistical Modelling</span>
-        <span class="course-tag">Transportation Safety</span>
+        <span class="course-tag">Python</span>
+        <span class="course-tag">OLS / Logistic Regression</span>
+        <span class="course-tag">A/B Testing</span>
+        <span class="course-tag">LLM Evaluation</span>
       </div>
     </div>
 
-    <div class="card stagger s3" style="cursor:default;margin-bottom:14px">
+    <!-- 3. NC TraCS -->
+    <div class="card stagger s4" style="cursor:default">
       <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px">
         <div>
-          <h3 style="font-family:'Instrument Serif',serif;font-size:22px;color:var(--text);font-weight:400">
-            <!-- EDIT: Add another role -->
-            Role Title
-          </h3>
-          <p style="font-size:13px;color:var(--accent);font-weight:600;margin-top:2px">Company Name</p>
+          <h3 style="font-family:'Instrument Serif',serif;font-size:22px;color:var(--text);font-weight:400">Data Science Consultant</h3>
+          <p style="font-size:13px;color:var(--accent);font-weight:600;margin-top:2px">NC Translational and Clinical Studies Institute, UNC Health</p>
+          <span class="tag" style="background:var(--blue)14;color:var(--blue);margin-top:4px">Capstone Project</span>
         </div>
-        <span style="font-size:12px;color:var(--text-muted);font-weight:500">Year – Year</span>
+        <span style="font-size:12px;color:var(--text-muted);font-weight:500;white-space:nowrap">Jan 2025 – May 2025</span>
       </div>
-      <p style="color:var(--text-mid);font-size:13px;line-height:1.7;margin-top:14px">
-        Add description here.
-      </p>
+      <ul style="color:var(--text-mid);font-size:13px;line-height:1.8;margin-top:14px;padding-left:18px">
+        <li>Built the first end-to-end analytics framework for a patient recruitment ticketing system, transforming an unmonitored process into a reproducible data pipeline</li>
+        <li>Reduced operational delays by <strong style="color:var(--accent)">40%</strong> through longitudinal analysis of REDCap data, tracking completion trends and identifying systemic bottlenecks</li>
+        <li>Demonstrated <strong style="color:var(--accent)">285%</strong> improvement in strategy adoption by applying Fisher's Exact Test and delivering actionable recommendations to clinical stakeholders</li>
+        <li>Built interactive Tableau dashboards enabling real-time monitoring for leadership reviews</li>
+      </ul>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:14px">
+        <span class="course-tag">Tableau</span>
+        <span class="course-tag">REDCap</span>
+        <span class="course-tag">Longitudinal Analysis</span>
+        <span class="course-tag">Fisher's Exact Test</span>
+      </div>
     </div>
 
-    <p style="color:var(--text-muted);font-size:12px;font-style:italic;margin-top:20px;text-align:center;letter-spacing:1px">
-      <!-- Remove this note once you've filled in all roles -->
-      ✏️ Edit the HTML to add your full work history
-    </p>
+    <!-- 4. Sports Science -->
+    <div class="card stagger s5" style="cursor:default">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px">
+        <div>
+          <h3 style="font-family:'Instrument Serif',serif;font-size:22px;color:var(--text);font-weight:400">Statistical Consultant</h3>
+          <p style="font-size:13px;color:var(--accent);font-weight:600;margin-top:2px">Dept. of Exercise & Sports Science, UNC</p>
+          <span class="tag" style="background:var(--blue)14;color:var(--blue);margin-top:4px">Capstone Project</span>
+        </div>
+        <span style="font-size:12px;color:var(--text-muted);font-weight:500;white-space:nowrap">Jan 2025 – May 2025</span>
+      </div>
+      <ul style="color:var(--text-mid);font-size:13px;line-height:1.8;margin-top:14px;padding-left:18px">
+        <li>Evaluated a university fitness program across 180+ fitness variables and 1,900+ participants to inform data-driven program design</li>
+        <li>Designed A/B tests across segments (age, gender, program type), defined KPIs, and built automated dashboards</li>
+        <li>Partnered with faculty, trainers, and sports science experts to translate findings into strategic recommendations</li>
+      </ul>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:14px">
+        <span class="course-tag">R</span>
+        <span class="course-tag">Tableau</span>
+        <span class="course-tag">A/B Testing</span>
+        <span class="course-tag">KPI Design</span>
+      </div>
+    </div>
+
+    <!-- 5. Future Generali -->
+    <div class="card stagger s6" style="cursor:default">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px">
+        <div>
+          <h3 style="font-family:'Instrument Serif',serif;font-size:22px;color:var(--text);font-weight:400">Data Analyst Intern</h3>
+          <p style="font-size:13px;color:var(--accent);font-weight:600;margin-top:2px">Future Generali India Insurance Co.</p>
+          <p style="font-size:11px;color:var(--text-muted);margin-top:2px">Mumbai, India</p>
+        </div>
+        <span style="font-size:12px;color:var(--text-muted);font-weight:500;white-space:nowrap">Jun 2022 – Aug 2022</span>
+      </div>
+      <ul style="color:var(--text-mid);font-size:13px;line-height:1.8;margin-top:14px;padding-left:18px">
+        <li>Reduced reserving data processing time by <strong style="color:var(--accent)">30%</strong> by streamlining quarterly workflows across 10+ insurance lines, managing 100K+ records with validation checks</li>
+        <li>Identified key risk factors driving motor insurance premium variation through regression analysis on policyholder data, informing pricing strategies for the underwriting team</li>
+      </ul>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:14px">
+        <span class="course-tag">R</span>
+        <span class="course-tag">Regression</span>
+        <span class="course-tag">Insurance Analytics</span>
+        <span class="course-tag">Data Validation</span>
+      </div>
+    </div>
+
+    <!-- 6. Teaching Assistant -->
+    <div class="card" style="cursor:default;background:var(--cream);border:1px dashed #C4CCBE60">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px">
+        <div>
+          <h3 style="font-family:'Instrument Serif',serif;font-size:22px;color:var(--text);font-weight:400">Graduate Teaching Assistant</h3>
+          <p style="font-size:13px;color:var(--accent);font-weight:600;margin-top:2px">Dept. of Statistics & School of Data Science, UNC</p>
+        </div>
+        <span style="font-size:12px;color:var(--text-muted);font-weight:500;white-space:nowrap">Aug 2023 – May 2025</span>
+      </div>
+      <ul style="color:var(--text-mid);font-size:13px;line-height:1.8;margin-top:14px;padding-left:18px">
+        <li>Tutored students in STOR 155 (Data Modeling & Inference) and DATA 120 (Data Ethics)</li>
+        <li>Mentored 10+ project groups on data analysis methodology and statistical modeling</li>
+        <li>Curated course content including practice sets, held office hours, and proctored exams</li>
+      </ul>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:14px">
+        <span class="course-tag">STOR 155</span>
+        <span class="course-tag">DATA 120</span>
+        <span class="course-tag">Mentorship</span>
+      </div>
+    </div>
+
   </div>
 </div>
 `;
@@ -615,38 +697,40 @@ pages.research = () => `
   </div>
 
   <div style="margin-top:36px">
-    <!-- PLACEHOLDER: Add your publications/research here -->
-
-    <div class="card stagger s2" style="cursor:default;margin-bottom:14px;position:relative;overflow:hidden">
+    <div class="card stagger s2" style="cursor:default;position:relative;overflow:hidden">
       <div style="position:absolute;right:16px;top:-12px;font-family:'Instrument Serif',serif;font-size:80px;color:#C4CCBE18;line-height:1">01</div>
       <div style="position:relative">
-        <span class="tag" style="background:#5C725212;color:var(--accent)">Publication</span>
-        <h3 style="font-family:'Instrument Serif',serif;font-size:20px;color:var(--text);font-weight:400;margin-top:8px">
-          <!-- EDIT: Paper title -->
-          Paper Title Goes Here
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:10px">
+          <span class="tag" style="background:#5C725212;color:var(--accent);margin:0">arXiv Preprint</span>
+          <span class="tag" style="background:#8A9FA812;color:var(--blue);margin:0">cs.AI</span>
+          <span style="font-size:12px;color:var(--text-muted)">December 2025</span>
+        </div>
+        <h3 style="font-family:'Instrument Serif',serif;font-size:21px;color:var(--text);font-weight:400;line-height:1.35">
+          Can LLMs Understand What We Cannot Say? Measuring Multilevel Alignment Through Abortion Stigma Across Cognitive, Interpersonal, and Structural Levels
         </h3>
-        <p style="font-size:13px;color:var(--accent);font-weight:500;margin-top:4px">
-          <!-- EDIT: Journal/Conference -->
-          Journal or Conference Name
+        <p style="font-size:13px;color:var(--text-mid);margin-top:10px;line-height:1.5">
+          Anika Sharma, <strong style="color:var(--accent)">Malavika Mampally</strong>, Chidaksh Ravuru, Kandyce Brennan, Neil S. Gaikwad
         </p>
-        <p style="font-size:12px;color:var(--text-muted);margin-top:2px">
-          <!-- EDIT: Co-authors -->
-          Co-authors: Name, Name, Malavika
+        <p style="color:var(--text-mid);font-size:13px;line-height:1.7;margin-top:16px">
+          Investigated whether LLMs coherently represent abortion stigma across cognitive, interpersonal, and structural levels. Systematically tested 627 demographically diverse personas across five leading LLMs using the validated Individual Level Abortion Stigma Scale (ILAS). Found that models fail tests of genuine understanding across all dimensions — overestimating interpersonal stigma while underestimating cognitive stigma, introducing demographic biases, and producing internal contradictions that reveal incoherent representations.
         </p>
-        <p style="color:var(--text-mid);font-size:13px;line-height:1.7;margin-top:12px">
-          <!-- EDIT: Abstract/summary -->
-          Brief summary of the research, methods used, and key findings.
-        </p>
-        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:12px">
-          <span class="course-tag">Methodology</span>
-          <span class="course-tag">Topic</span>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:16px">
+          <span class="course-tag">LLM Alignment</span>
+          <span class="course-tag">AI Safety</span>
+          <span class="course-tag">Multilevel Analysis</span>
+          <span class="course-tag">Stigma Measurement</span>
+          <span class="course-tag">Reproductive Health</span>
+        </div>
+        <div style="margin-top:18px">
+          <a href="https://arxiv.org/abs/2512.13142" target="_blank" style="display:inline-flex;align-items:center;gap:6px;color:var(--accent);font-size:12px;font-weight:600;text-decoration:none;letter-spacing:0.5px;border:1.5px solid var(--accent);padding:7px 18px;border-radius:100px;transition:background 0.3s,color 0.3s" onmouseover="this.style.background='#5C7252';this.style.color='#F2F4F0'" onmouseout="this.style.background='transparent';this.style.color='#5C7252'">
+            Read on arXiv ↗
+          </a>
         </div>
       </div>
     </div>
 
-    <p style="color:var(--text-muted);font-size:12px;font-style:italic;margin-top:20px;text-align:center;letter-spacing:1px">
-      ✏️ Edit the HTML to add your research and publications
-    </p>
+    <!-- ADD MORE PUBLICATIONS BELOW — copy the card pattern above -->
+    
   </div>
 </div>
 `;
@@ -743,8 +827,8 @@ pages.art = () => `
     <div class="title-accent"></div>
   </div>
   <div class="card-grid">
-    ${buildArtCard('Carnatic Music','10+ Years','Trained in Indian classical Carnatic music — a decade of disciplined study in one of the world's oldest musical traditions.','var(--accent)',null,'s2')}
-    ${buildArtCard('The Plot — Design Editor','2020–21','Design Editor of The Plot, the statistics magazine of St. Xavier's College Mumbai. Sole designer of the first digital flippable edition.','var(--sage)','Sole Digital Designer','s3')}
+    ${buildArtCard('Carnatic Music','10+ Years','Trained in Indian classical Carnatic music — a decade of disciplined study in one of the worlds oldest musical traditions.','var(--accent)',null,'s2')}
+    ${buildArtCard('The Plot — Design Editor','2020–21','Design Editor of The Plot, the statistics magazine of St. Xaviers College Mumbai. Sole designer of the first digital flippable edition.','var(--sage)','Sole Digital Designer','s3')}
     ${buildArtCard('Indian Music Group — Head of Design','2021–22','Executive Committee member and Head of Design at IMG — the largest student-led non-profit hosting major Indian artists. Led a team of 7 in visual media and event promotions.','var(--blue)','Team of 7','s4')}
     ${buildArtCard('App Logo Design','2024','Designed the logo for a student transportation app as part of a business class project at UNC Chapel Hill.','var(--mauve)',null,'s5')}
   </div>
