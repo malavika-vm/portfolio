@@ -255,7 +255,65 @@ button { font-family: 'Outfit', sans-serif; }
   .dot-row { display: flex !important; }
   .page { padding: 110px 20px 32px; }
   .card-grid { grid-template-columns: 1fr; }
-  .hero-photo-wrap { min-height: 50vh !important; flex: none !important; width: 100% !important; }
+
+  /* Hero mobile layout */
+  .hero-page {
+    flex-direction: column !important;
+    min-height: auto !important;
+  }
+  .hero-page .hero-text-wrap {
+    padding: 90px 24px 36px !important;
+    flex: none !important;
+    min-height: auto !important;
+  }
+  .hero-page .hero-text-wrap > div:first-of-type {
+    margin: 0 !important;
+  }
+  .hero-page .hero-photo-wrap {
+    min-height: 55vh !important;
+    flex: none !important;
+    width: 100% !important;
+    position: relative !important;
+  }
+  .hero-page .hero-photo-wrap img {
+    position: absolute;
+  }
+
+  /* Tighten spacing on mobile */
+  .hero-page .btn-primary,
+  .hero-page .btn-secondary {
+    padding: 11px 26px;
+    font-size: 11px;
+  }
+  .hero-subtitle {
+    letter-spacing: 3.5px !important;
+    font-size: 11px !important;
+  }
+  .hero-mvm {
+    margin-top: 40px !important;
+  }
+  .hero-buttons {
+    margin-top: 32px !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .hero-page .hero-text-wrap {
+    padding: 82px 20px 28px !important;
+  }
+  .hero-page .hero-photo-wrap {
+    min-height: 50vh !important;
+  }
+  .hero-subtitle {
+    letter-spacing: 3px !important;
+    font-size: 10px !important;
+  }
+  .hero-mvm {
+    margin-top: 32px !important;
+  }
+  .hero-buttons {
+    margin-top: 24px !important;
+  }
 }
 </style>
 </head>
@@ -339,14 +397,14 @@ const pages = {};
 
 // HOME
 pages.home = () => `
-<div class="page" style="min-height:100vh;display:flex;align-items:stretch;position:relative;overflow:hidden;padding:0;max-width:none">
-  <div style="flex:1;display:flex;align-items:center;padding:80px 48px 40px;position:relative;min-width:0">
+<div class="page hero-page" style="min-height:100vh;display:flex;align-items:stretch;position:relative;overflow:hidden;padding:0;max-width:none">
+  <div class="hero-text-wrap" style="flex:1;display:flex;align-items:center;padding:80px 48px 40px;position:relative;min-width:0">
     <div style="position:absolute;right:-15%;top:8%;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,#5C725210 0%,transparent 70%)"></div>
     <div style="position:absolute;left:10%;bottom:15%;width:150px;height:150px;border-radius:50%;background:radial-gradient(circle,#8A9FA80A 0%,transparent 65%)"></div>
 
     <div style="max-width:520px;margin:0 auto;width:100%">
       <div class="stagger s1">
-        <p style="font-size:12px;color:var(--text-muted);letter-spacing:5px;text-transform:uppercase;margin-bottom:20px;font-weight:500">
+        <p class="hero-subtitle" style="font-size:12px;color:var(--text-muted);letter-spacing:5px;text-transform:uppercase;margin-bottom:20px;font-weight:500">
           Statistician · Data Scientist · Designer
         </p>
       </div>
@@ -364,12 +422,12 @@ pages.home = () => `
         </div>
       </div>
       <div class="stagger s4">
-        <div style="display:flex;gap:12px;margin-top:44px;flex-wrap:wrap">
-          <a href="Malavika_Mampally_Resume_po.pdf" target="_blank" class="btn-primary">View Resume</a>
+        <div class="hero-buttons" style="display:flex;gap:12px;margin-top:44px;flex-wrap:wrap">
+          <a href="resume.pdf" target="_blank" class="btn-primary">View Resume</a>
           <button class="btn-secondary" onclick="navigate('about')">About Me</button>
         </div>
       </div>
-      <div class="stagger s5" style="margin-top:60px">
+      <div class="stagger s5 hero-mvm" style="margin-top:60px">
         <span style="font-family:'Instrument Serif',serif;font-size:14px;color:var(--text-muted);font-style:italic;letter-spacing:1px">
           by <span style="font-size:18px;color:var(--text-mid);font-style:normal">mvm</span>
         </span>
@@ -829,7 +887,7 @@ pages.volunteering = () => `
   </div>
   <div style="margin-top:36px">
     ${buildVolItem("2024","Volunteer","Dept. of Statistics and Operations Research, UNC Chapel Hill","Represented the Department of Statistics and Operations Research at UNC's annual Science Expo, attended by hundreds of community members and families. Demonstrated interactive probability and statistics games including the Galton Board, Monty Hall Problem, and MIT's Mind Reader using visual aids and hands-on setups. Explained the statistical concepts behind each game to both children and adults, sparking curiosity and engagement around data and decision-making.","unc-expo.png",null,'s2')}
-    ${buildVolItem("2022","Volunteer","Dept. of Statistics, St. Xavier's College","Ran the statistics department booth at the Popularization of Science Fair. Created an interactive cricket board game where players bet on their score based on the sum of two dice, teaching probability distributions and expected outcomes through gameplay.","sxc-expo.jpeg",null,'s3')}
+    ${buildVolItem("2022","Volunteer","Dept. of Statistics, St. Xavier's College","Ran the statistics department booth at the Popularization of Science Fair. Created an interactive cricket board game where players bet on their score based on the sum of two dice, teaching probability distributions and expected outcomes through gameplay.","sxc-expo.jpg",null,'s3')}
     ${buildVolItem("2021-23","Vice President, Leo Club of Mumbai Vikas","Lions Club International","Founding Vice President. Organised food drives, beach cleanups, and community events for underprivileged students.",null,"https://www.instagram.com/p/CjihDfrvNpm/",'s4')}
     ${buildVolItem("2020","6th Grade Math Teacher","St. Vincent de Paul","Remote math tutoring for 6th grade underprivileged girls during COVID. Created homework, tests, and study materials.",null,null,'s5')}
     ${buildVolItem("2019-20","10th Grade Math, History and English Teacher","Salam Balak Trust Shelter for Boys","Tutored 10th grade boys from a shelter in English, History, and Mathematics.",null,null,'s6')}
@@ -888,7 +946,7 @@ function addFooter() {
           <a href="https://linkedin.com/in/malavikamampally" class="btn-secondary">LinkedIn</a>
           <a href="https://github.com/malavika-vm" class="btn-secondary">GitHub</a>
           <a href="mailto:malavikamampally@gmail.com" class="btn-secondary">Email</a>
-          <a href="Malavika_Mampally_Resume_po.pdf" target="_blank" class="btn-primary">Resume ↗</a>
+          <a href="resume.pdf" target="_blank" class="btn-primary">Resume ↗</a>
         </div>
         <div style="margin-top:40px;font-size:10px;color:#7E8A7A60;letter-spacing:3px">© 2025 MVM</div>
       </div>
