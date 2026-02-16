@@ -255,6 +255,7 @@ button { font-family: 'Outfit', sans-serif; }
   .dot-row { display: flex !important; }
   .page { padding: 110px 20px 32px; }
   .card-grid { grid-template-columns: 1fr; }
+  .hero-photo-wrap { min-height: 50vh !important; flex: none !important; width: 100% !important; }
 }
 </style>
 </head>
@@ -295,7 +296,6 @@ const PAGES = [
 let currentPage = 'home';
 let mobileOpen = false;
 
-// BUILD NAV
 function buildNav() {
   const navLinks = document.getElementById('navLinks');
   const dotRow = document.getElementById('dotRow');
@@ -335,61 +335,49 @@ function navigate(pageId) {
   if (mobileOpen) toggleMobile();
 }
 
-// RENDER PAGES
-function renderPage() {
-  const content = document.getElementById('content');
-  content.innerHTML = pages[currentPage]();
-}
-
-// ============================================================
-// PAGE CONTENT
-// ============================================================
-
 const pages = {};
 
 // HOME
 pages.home = () => `
-<div class="page" style="min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding-top:80px;">
-  <!-- BG circles -->
-  <div style="position:absolute;right:-8%;top:8%;width:clamp(280px,40vw,480px);height:clamp(280px,40vw,480px);border-radius:50%;background:radial-gradient(circle,#5C725212 0%,#5C725204 55%,transparent 70%)"></div>
-  <div style="position:absolute;left:5%;bottom:12%;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,#8A9FA810 0%,transparent 65%)"></div>
-  <div style="position:absolute;left:30%;top:5%;width:300px;height:200px;background:radial-gradient(ellipse,#7B947008 0%,transparent 60%);filter:blur(30px)"></div>
+<div class="page" style="min-height:100vh;display:flex;align-items:stretch;position:relative;overflow:hidden;padding:0;max-width:none">
+  <div style="flex:1;display:flex;align-items:center;padding:80px 48px 40px;position:relative;min-width:0">
+    <div style="position:absolute;right:-15%;top:8%;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,#5C725210 0%,transparent 70%)"></div>
+    <div style="position:absolute;left:10%;bottom:15%;width:150px;height:150px;border-radius:50%;background:radial-gradient(circle,#8A9FA80A 0%,transparent 65%)"></div>
 
-  <div style="position:relative;max-width:1000px;margin:0 auto;width:100%;display:flex;align-items:center;gap:48px;flex-wrap:wrap">
-    <div style="flex:1;min-width:300px">
-    <div class="stagger s1">
-      <p style="font-size:12px;color:var(--text-muted);letter-spacing:5px;text-transform:uppercase;margin-bottom:20px;font-weight:500">
-        Statistician · Data Scientist · Designer
-      </p>
-    </div>
-    <div class="stagger s2">
-      <h1 style="font-family:'Instrument Serif',serif;font-size:clamp(64px,13vw,150px);font-weight:400;color:var(--text);line-height:0.88;letter-spacing:-3px">
-        Mala<span style="color:var(--accent)">v</span>ika
-      </h1>
-    </div>
-    <div class="stagger s3">
-      <div style="display:flex;align-items:center;gap:14px;margin-top:24px">
-        <div style="height:1.5px;width:36px;background:var(--accent)"></div>
-        <p style="font-size:15px;color:var(--text-mid);font-weight:400;line-height:1.6;max-width:420px">
-          Turning data into decisions. M.S. in Statistics from UNC Chapel Hill.
+    <div style="max-width:520px;margin:0 auto;width:100%">
+      <div class="stagger s1">
+        <p style="font-size:12px;color:var(--text-muted);letter-spacing:5px;text-transform:uppercase;margin-bottom:20px;font-weight:500">
+          Statistician · Data Scientist · Designer
         </p>
       </div>
-    </div>
-    <div class="stagger s4">
-      <div style="display:flex;gap:12px;margin-top:44px;flex-wrap:wrap">
-        <a href="#" class="btn-primary">View Resume</a>
-        <button class="btn-secondary" onclick="navigate('about')">About Me</button>
+      <div class="stagger s2">
+        <h1 style="font-family:'Instrument Serif',serif;font-size:clamp(56px,8vw,120px);font-weight:400;color:var(--text);line-height:0.88;letter-spacing:-3px">
+          Mala<span style="color:var(--accent)">v</span>ika
+        </h1>
+      </div>
+      <div class="stagger s3">
+        <div style="display:flex;align-items:center;gap:14px;margin-top:24px">
+          <div style="height:1.5px;width:36px;background:var(--accent)"></div>
+          <p style="font-size:15px;color:var(--text-mid);font-weight:400;line-height:1.6;max-width:420px">
+            Turning data into decisions. M.S. in Statistics from UNC Chapel Hill.
+          </p>
+        </div>
+      </div>
+      <div class="stagger s4">
+        <div style="display:flex;gap:12px;margin-top:44px;flex-wrap:wrap">
+          <a href="#" class="btn-primary">View Resume</a>
+          <button class="btn-secondary" onclick="navigate('about')">About Me</button>
+        </div>
+      </div>
+      <div class="stagger s5" style="margin-top:60px">
+        <span style="font-family:'Instrument Serif',serif;font-size:14px;color:var(--text-muted);font-style:italic;letter-spacing:1px">
+          by <span style="font-size:18px;color:var(--text-mid);font-style:normal">mvm</span>
+        </span>
       </div>
     </div>
-    <div class="stagger s5" style="margin-top:60px">
-      <span style="font-family:'Instrument Serif',serif;font-size:14px;color:var(--text-muted);font-style:italic;letter-spacing:1px">
-        by <span style="font-size:18px;color:var(--text-mid);font-style:normal">mvm</span>
-      </span>
-    </div>
-    </div>
-    <div class="stagger s3" style="flex-shrink:0">
-      <img src="hero-photo.jpg" alt="Malavika" style="width:clamp(240px,28vw,320px);height:clamp(320px,38vw,440px);object-fit:cover;object-position:center;border-radius:18px;border:1px solid #C4CCBE30" />
-    </div>
+  </div>
+  <div class="stagger s2 hero-photo-wrap" style="flex:1;min-height:100vh;position:relative;overflow:hidden">
+    <img src="hero-photo.jpg" alt="Malavika" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;position:absolute;top:0;left:0" />
   </div>
 </div>
 `;
@@ -437,16 +425,14 @@ pages.about = () => `
       </div>
     </div>
   </div>
-
 </div>
 `;
 
-// EDUCATION
 // EDUCATION STATE
 const edMain = [
-  { year:'2023–25', school:'UNC Chapel Hill', loc:'North Carolina', degree:'M.S. Statistics, Analytics & Data Science', color:'var(--blue)', courses:['Statistical Consulting','Sports Analytics','Applied Statistics','Stochastic Modelling','Knowledge Graphs','Design Thinking'] },
-  { year:'2022–23', school:'University of Mumbai', degree:'PG Diploma, Applied Statistics & Software', color:'var(--accent)', highlights:[{n:'#1',l:'Valedictorian'},{n:'100/100',l:'Healthcare Statistics'},{n:'98/100',l:'Lean Six Sigma Techinques'}], courses:['Market Research','Healthcare & Clinical Research','Six Sigma','Business Analytics'], extra:'Class Representative' },
-  { year:'2019–22', school:"St. Xavier's College", loc:'Mumbai', degree:'B.Sc. Statistics, Mathematics & Economics', color:'var(--sage)', highlights:[{n:'9.69',l:'CGPA'},{n:'Top 1%',l:'Economics'}], tag:'Stats Major' },
+  { year:'2023-25', school:'UNC Chapel Hill', loc:'North Carolina', degree:'M.S. Statistics, Analytics & Data Science', color:'var(--blue)', courses:['Statistical Consulting','Sports Analytics','Applied Statistics','Stochastic Modelling','Knowledge Graphs','Design Thinking'] },
+  { year:'2022-23', school:'University of Mumbai', degree:'PG Diploma, Applied Statistics & Software', color:'var(--accent)', highlights:[{n:'#1',l:'Valedictorian'},{n:'100/100',l:'Healthcare Statistics'},{n:'98/100',l:'Lean Six Sigma Techinques'}], courses:['Market Research','Healthcare & Clinical Research','Six Sigma','Business Analytics'], extra:'Class Representative' },
+  { year:'2019-22', school:"St. Xavier's College", loc:'Mumbai', degree:'B.Sc. Statistics, Mathematics & Economics', color:'var(--sage)', highlights:[{n:'9.69',l:'CGPA'},{n:'Top 1%',l:'Economics'}], tag:'Stats Major' },
 ];
 const edEarlier = [
   { year:'2019', school:'Junior College', degree:'Maharashtra State Board HSC', color:'var(--mauve)', highlights:[{n:'96/100',l:'Math'},{n:'86%',l:'Average'}] },
@@ -491,7 +477,7 @@ function edRenderDynamic() {
   if(!pillsEl || !cardEl) return;
   pillsEl.innerHTML = all.map(function(t,i) {
     return '<button class="pill '+(edActiveIdx===i?'active':'')+'" onclick="edNav('+i+')">'+t.year+'</button>';
-  }).join('') + '<button class="pill-dashed" onclick="edToggle()">'+(edShowEarlier?'Hide ×':'Earlier +')+'</button>';
+  }).join('') + '<button class="pill-dashed" onclick="edToggle()">'+(edShowEarlier?'Hide x':'Earlier +')+'</button>';
   cardEl.innerHTML = edBuildCard(all[edActiveIdx]);
 }
 
@@ -509,7 +495,6 @@ pages.education = () => `
   </div>
 
   <div class="pill-row stagger s2" id="edPills"></div>
-
   <div id="edCard" class="stagger s3" style="margin-top:24px"></div>
 
   <div class="stagger s4" style="margin-top:20px">
@@ -534,8 +519,6 @@ pages.experience = () => `
   </div>
 
   <div style="margin-top:36px;display:grid;gap:14px">
-
-    <!-- 1. Lowtouch.ai -->
     <div class="card stagger s2" style="cursor:default">
       <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px">
         <div>
@@ -543,7 +526,7 @@ pages.experience = () => `
           <p style="font-size:13px;color:var(--accent);font-weight:600;margin-top:2px">Lowtouch.ai</p>
           <p style="font-size:11px;color:var(--text-muted);margin-top:2px">Remote, United States</p>
         </div>
-        <span style="font-size:12px;color:var(--text-muted);font-weight:500;white-space:nowrap">Nov 2025 – Present</span>
+        <span style="font-size:12px;color:var(--text-muted);font-weight:500;white-space:nowrap">Nov 2025 - Present</span>
       </div>
       <ul style="color:var(--text-mid);font-size:13px;line-height:1.8;margin-top:14px;padding-left:18px">
         <li>Evaluating and refining predictive and retrieval-based models for financial-services workflows, focusing on accuracy, consistency, and robustness</li>
@@ -560,14 +543,13 @@ pages.experience = () => `
       </div>
     </div>
 
-    <!-- 2. Society-Centered AI Lab -->
     <div class="card stagger s3" style="cursor:default">
       <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px">
         <div>
           <h3 style="font-family:'Instrument Serif',serif;font-size:22px;color:var(--text);font-weight:400">Statistical Research Associate, AI Research</h3>
           <p style="font-size:13px;color:var(--accent);font-weight:600;margin-top:2px">Society-Centered AI Lab, School of Data Science & Society, UNC</p>
         </div>
-        <span style="font-size:12px;color:var(--text-muted);font-weight:500;white-space:nowrap">Jan 2025 – Dec 2025</span>
+        <span style="font-size:12px;color:var(--text-muted);font-weight:500;white-space:nowrap">Jan 2025 - Dec 2025</span>
       </div>
       <ul style="color:var(--text-mid);font-size:13px;line-height:1.8;margin-top:14px;padding-left:18px">
         <li>Led large-scale LLM benchmarking study across 627 personas, running multivariable OLS and logistic regressions across five response variables and nine demographic predictors</li>
@@ -585,7 +567,6 @@ pages.experience = () => `
       </div>
     </div>
 
-    <!-- 3. NC TraCS -->
     <div class="card stagger s4" style="cursor:default">
       <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px">
         <div>
@@ -593,7 +574,7 @@ pages.experience = () => `
           <p style="font-size:13px;color:var(--accent);font-weight:600;margin-top:2px">NC Translational and Clinical Studies Institute, UNC Health</p>
           <span class="tag" style="background:var(--blue)14;color:var(--blue);margin-top:4px">Capstone Project</span>
         </div>
-        <span style="font-size:12px;color:var(--text-muted);font-weight:500;white-space:nowrap">Jan 2025 – May 2025</span>
+        <span style="font-size:12px;color:var(--text-muted);font-weight:500;white-space:nowrap">Jan 2025 - May 2025</span>
       </div>
       <ul style="color:var(--text-mid);font-size:13px;line-height:1.8;margin-top:14px;padding-left:18px">
         <li>Built the first end-to-end analytics framework for a patient recruitment ticketing system, transforming an unmonitored process into a reproducible data pipeline</li>
@@ -610,7 +591,6 @@ pages.experience = () => `
       </div>
     </div>
 
-    <!-- 4. Sports Science -->
     <div class="card stagger s5" style="cursor:default">
       <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px">
         <div>
@@ -618,7 +598,7 @@ pages.experience = () => `
           <p style="font-size:13px;color:var(--accent);font-weight:600;margin-top:2px">Dept. of Exercise & Sports Science, UNC</p>
           <span class="tag" style="background:var(--blue)14;color:var(--blue);margin-top:4px">Capstone Project</span>
         </div>
-        <span style="font-size:12px;color:var(--text-muted);font-weight:500;white-space:nowrap">Jan 2025 – May 2025</span>
+        <span style="font-size:12px;color:var(--text-muted);font-weight:500;white-space:nowrap">Jan 2025 - May 2025</span>
       </div>
       <ul style="color:var(--text-mid);font-size:13px;line-height:1.8;margin-top:14px;padding-left:18px">
         <li>Evaluated a university fitness program across 180+ fitness variables and 1,900+ participants to inform data-driven program design</li>
@@ -635,7 +615,6 @@ pages.experience = () => `
       </div>
     </div>
 
-    <!-- 5. Future Generali -->
     <div class="card stagger s6" style="cursor:default">
       <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px">
         <div>
@@ -643,7 +622,7 @@ pages.experience = () => `
           <p style="font-size:13px;color:var(--accent);font-weight:600;margin-top:2px">Future Generali India Insurance Co.</p>
           <p style="font-size:11px;color:var(--text-muted);margin-top:2px">Mumbai, India</p>
         </div>
-        <span style="font-size:12px;color:var(--text-muted);font-weight:500;white-space:nowrap">Jun 2022 – Aug 2022</span>
+        <span style="font-size:12px;color:var(--text-muted);font-weight:500;white-space:nowrap">Jun 2022 - Aug 2022</span>
       </div>
       <ul style="color:var(--text-mid);font-size:13px;line-height:1.8;margin-top:14px;padding-left:18px">
         <li>Reduced reserving data processing time by <strong style="color:var(--accent)">30%</strong> by streamlining quarterly workflows across 10+ insurance lines, managing 100K+ records with validation checks</li>
@@ -658,14 +637,13 @@ pages.experience = () => `
       </div>
     </div>
 
-    <!-- 6. Teaching Assistant -->
     <div class="card" style="cursor:default;background:var(--cream);border:1px dashed #C4CCBE60">
       <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px">
         <div>
           <h3 style="font-family:'Instrument Serif',serif;font-size:22px;color:var(--text);font-weight:400">Graduate Teaching Assistant</h3>
           <p style="font-size:13px;color:var(--accent);font-weight:600;margin-top:2px">Dept. of Statistics & School of Data Science, UNC</p>
         </div>
-        <span style="font-size:12px;color:var(--text-muted);font-weight:500;white-space:nowrap">Aug 2023 – May 2025</span>
+        <span style="font-size:12px;color:var(--text-muted);font-weight:500;white-space:nowrap">Aug 2023 - May 2025</span>
       </div>
       <ul style="color:var(--text-mid);font-size:13px;line-height:1.8;margin-top:14px;padding-left:18px">
         <li>Tutored students in STOR 155 (Data Modeling & Inference) and DATA 120 (Data Ethics)</li>
@@ -678,7 +656,6 @@ pages.experience = () => `
         <span class="course-tag">Mentorship</span>
       </div>
     </div>
-
   </div>
 </div>
 `;
@@ -726,14 +703,11 @@ pages.research = () => `
         </div>
       </div>
     </div>
-
-    <!-- ADD MORE PUBLICATIONS BELOW. Copy the card pattern above -->
-    
   </div>
 </div>
 `;
 
-// CREDENTIALS (Certifications)
+// CREDENTIALS
 pages.credentials = () => `
 <div class="page" style="max-width:1060px;margin:0 auto">
   <div class="stagger s1">
@@ -765,18 +739,18 @@ pages.credentials = () => `
 `;
 
 function buildCertGroup(title, subtitle, color, items, stagger) {
-  let html = `<div class="stagger ${stagger}" style="background:var(--warm);border-radius:18px;overflow:hidden;border:1px solid #C4CCBE50">`;
-  html += `<div style="padding:16px 22px 10px;border-bottom:1px solid #C4CCBE30"><div style="display:flex;justify-content:space-between;align-items:baseline">`;
-  html += `<h3 style="font-family:'Instrument Serif',serif;font-size:20px;color:var(--text);font-weight:400">${title}</h3>`;
-  html += `<span style="font-size:10px;color:${color};font-weight:700;letter-spacing:1.5px">${subtitle}</span>`;
-  html += `</div></div>`;
-  items.forEach((item, i) => {
-    html += `<div style="padding:11px 22px;display:flex;align-items:center;gap:12px;${i < items.length-1 ? 'border-bottom:1px solid #C4CCBE20':''}">`
-    html += `<div style="background:${color}14;color:${color};padding:3px 9px;border-radius:6px;font-size:10px;font-weight:700;min-width:38px;text-align:center;letter-spacing:0.5px">${item.code}</div>`;
-    html += `<div><div style="font-size:13px;color:var(--text);font-weight:500">${item.name}</div><div style="font-size:11px;color:var(--text-muted)">${item.note}</div></div>`;
-    html += `</div>`;
+  let html = '<div class="stagger '+stagger+'" style="background:var(--warm);border-radius:18px;overflow:hidden;border:1px solid #C4CCBE50">';
+  html += '<div style="padding:16px 22px 10px;border-bottom:1px solid #C4CCBE30"><div style="display:flex;justify-content:space-between;align-items:baseline">';
+  html += '<h3 style="font-family:Instrument Serif,serif;font-size:20px;color:var(--text);font-weight:400">'+title+'</h3>';
+  html += '<span style="font-size:10px;color:'+color+';font-weight:700;letter-spacing:1.5px">'+subtitle+'</span>';
+  html += '</div></div>';
+  items.forEach(function(item, i) {
+    html += '<div style="padding:11px 22px;display:flex;align-items:center;gap:12px;'+(i < items.length-1 ? 'border-bottom:1px solid #C4CCBE20':'')+'">';
+    html += '<div style="background:'+color+'14;color:'+color+';padding:3px 9px;border-radius:6px;font-size:10px;font-weight:700;min-width:38px;text-align:center;letter-spacing:0.5px">'+item.code+'</div>';
+    html += '<div><div style="font-size:13px;color:var(--text);font-weight:500">'+item.name+'</div><div style="font-size:11px;color:var(--text-muted)">'+item.note+'</div></div>';
+    html += '</div>';
   });
-  html += `</div>`;
+  html += '</div>';
   return html;
 }
 
@@ -799,19 +773,19 @@ pages.competitions = () => `
 `;
 
 function buildComp(title, org, year, rank, team, color, desc, role, stagger, tags) {
-  let html = `<div class="card stagger ${stagger}" style="cursor:default;position:relative;overflow:hidden">`;
-  html += `<div style="position:absolute;right:16px;top:-18px;font-family:'Instrument Serif',serif;font-size:96px;font-weight:400;color:#C4CCBE18;line-height:1">${year}</div>`;
-  html += `<div style="position:relative">`;
-  html += `<div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;flex-wrap:wrap">`;
-  html += `<span class="tag" style="background:${color}14;color:${color};margin:0">${rank}</span>`;
-  if(role) html += `<span class="tag" style="background:#C4CCBE25;color:var(--text);margin:0">${role}</span>`;
-  html += `<span style="font-size:12px;color:var(--text-muted)">${year}</span></div>`;
-  html += `<h3 style="font-family:'Instrument Serif',serif;font-size:22px;color:var(--text);margin:0 0 4px;font-weight:400">${title}</h3>`;
-  html += `<p style="font-size:13px;color:${color};font-weight:600;margin:0 0 2px">${org}</p>`;
-  html += `<p style="font-size:13px;color:var(--text-muted);margin:0 0 12px">Team: <span style="color:var(--text-mid);font-weight:500">${team}</span></p>`;
-  html += `<p class="card-desc" style="margin:0">${desc}</p>`;
-  if(tags) { html += `<div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:14px">`; tags.forEach(t => { html += `<span class="course-tag">${t}</span>`; }); html += `</div>`; }
-  html += `</div></div>`;
+  let html = '<div class="card stagger '+stagger+'" style="cursor:default;position:relative;overflow:hidden">';
+  html += '<div style="position:absolute;right:16px;top:-18px;font-family:Instrument Serif,serif;font-size:96px;font-weight:400;color:#C4CCBE18;line-height:1">'+year+'</div>';
+  html += '<div style="position:relative">';
+  html += '<div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;flex-wrap:wrap">';
+  html += '<span class="tag" style="background:'+color+'14;color:'+color+';margin:0">'+rank+'</span>';
+  if(role) html += '<span class="tag" style="background:#C4CCBE25;color:var(--text);margin:0">'+role+'</span>';
+  html += '<span style="font-size:12px;color:var(--text-muted)">'+year+'</span></div>';
+  html += '<h3 style="font-family:Instrument Serif,serif;font-size:22px;color:var(--text);margin:0 0 4px;font-weight:400">'+title+'</h3>';
+  html += '<p style="font-size:13px;color:'+color+';font-weight:600;margin:0 0 2px">'+org+'</p>';
+  html += '<p style="font-size:13px;color:var(--text-muted);margin:0 0 12px">Team: <span style="color:var(--text-mid);font-weight:500">'+team+'</span></p>';
+  html += '<p class="card-desc" style="margin:0">'+desc+'</p>';
+  if(tags) { html += '<div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:14px">'; tags.forEach(function(t) { html += '<span class="course-tag">'+t+'</span>'; }); html += '</div>'; }
+  html += '</div></div>';
   return html;
 }
 
@@ -827,19 +801,19 @@ pages.art = () => `
   </div>
   <div class="card-grid">
     ${buildArtCard('Carnatic Music','10+ Years','Trained in Indian classical Carnatic music. A decade of disciplined study in one of the worlds oldest musical traditions.','var(--accent)',null,'s2')}
-    ${buildArtCard('The Plot: Design Editor','2020–21','Design Editor of The Plot, the statistics magazine of St. Xaviers College Mumbai. Sole designer of the first digital flippable edition.','var(--sage)','Sole Digital Designer','s3')}
-    ${buildArtCard('Indian Music Group: Head of Design','2021–22','Executive Committee member and Head of Design at IMG, the largest student-led non-profit hosting major Indian artists. Led a team of 7 in visual media and event promotions.','var(--blue)','Team of 7','s4')}
+    ${buildArtCard('The Plot: Design Editor','2020-21','Design Editor of The Plot, the statistics magazine of St. Xaviers College Mumbai. Sole designer of the first digital flippable edition.','var(--sage)','Sole Digital Designer','s3')}
+    ${buildArtCard('Indian Music Group: Head of Design','2021-22','Executive Committee member and Head of Design at IMG, the largest student-led non-profit hosting major Indian artists. Led a team of 7 in visual media and event promotions.','var(--blue)','Team of 7','s4')}
     ${buildArtCard('App Logo Design','2024','Designed the logo for a student transportation app as part of a business class project at UNC Chapel Hill.','var(--mauve)',null,'s5')}
   </div>
 </div>
 `;
 
 function buildArtCard(title, period, desc, color, tag, stagger) {
-  let html = `<div class="card stagger ${stagger}">`;
-  html += `<div style="display:flex;justify-content:space-between;align-items:flex-start"><div class="card-color-bar" style="background:${color}"></div><span class="card-period">${period}</span></div>`;
-  html += `<h3 class="card-title">${title}</h3>`;
-  if(tag) html += `<span class="tag" style="background:${color}12;color:${color}">${tag}</span>`;
-  html += `<p class="card-desc">${desc}</p></div>`;
+  let html = '<div class="card stagger '+stagger+'">';
+  html += '<div style="display:flex;justify-content:space-between;align-items:flex-start"><div class="card-color-bar" style="background:'+color+'"></div><span class="card-period">'+period+'</span></div>';
+  html += '<h3 class="card-title">'+title+'</h3>';
+  if(tag) html += '<span class="tag" style="background:'+color+'12;color:'+color+'">'+tag+'</span>';
+  html += '<p class="card-desc">'+desc+'</p></div>';
   return html;
 }
 
@@ -856,20 +830,20 @@ pages.volunteering = () => `
   <div style="margin-top:36px">
     ${buildVolItem("2024","UNC Science Expo, UNC Chapel Hill","Represented the Department of Statistics and Operations Research at UNC's annual Science Expo, attended by hundreds of community members and families. Demonstrated interactive probability and statistics games including the Galton Board, Monty Hall Problem, and MIT's Mind Reader using visual aids and hands-on setups. Explained the statistical concepts behind each game to both children and adults, sparking curiosity and engagement around data and decision-making.","📷",null,'s2')}
     ${buildVolItem("2022","Popularization of Science Fair, St. Xavier's","Ran the statistics department booth at the Science Expo. Created an interactive cricket board game where players bet on their score based on the sum of two dice, teaching probability distributions and expected outcomes through gameplay.","📷",null,'s3')}
-    ${buildVolItem("2021–23","Leo Club of Vikas","Founding Vice President. Organised food drives, beach cleanups, and community events for underprivileged students.","📷","Founding VP",'s4')}
+    ${buildVolItem("2021-23","Leo Club of Vikas","Founding Vice President. Organised food drives, beach cleanups, and community events for underprivileged students.","📷","Founding VP",'s4')}
     ${buildVolItem("2020","St. Vincent de Paul Tutor","Remote math tutoring for 6th grade underprivileged girls during COVID. Created homework, tests, and study materials.",null,null,'s5')}
-    ${buildVolItem("2019–20","Boys' Shelter Tutor","Tutored 10th grade boys from a shelter in English, History, and Mathematics.",null,null,'s6')}
+    ${buildVolItem("2019-20","Boys' Shelter Tutor","Tutored 10th grade boys from a shelter in English, History, and Mathematics.",null,null,'s6')}
   </div>
 </div>
 `;
 
 function buildVolItem(year, title, desc, photo, tag, stagger) {
-  let html = `<div class="list-item stagger ${stagger}"><div class="list-year">${year}</div><div style="flex:1"><div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">`;
-  html += `<h3 class="list-title">${title}</h3>`;
-  if(tag) html += `<span class="tag" style="background:#5C725212;color:var(--accent);margin:0">${tag}</span>`;
-  html += `</div><p class="card-desc" style="margin-top:4px">${desc}</p>`;
-  if(photo) html += `<div style="margin-top:10px;width:100%;max-width:280px;height:160px;border-radius:10px;background:var(--cream);border:1px dashed var(--border);display:flex;align-items:center;justify-content:center"><span style="font-size:11px;color:var(--text-muted);letter-spacing:2px;text-transform:uppercase">Photo</span></div>`;
-  html += `</div></div>`;
+  let html = '<div class="list-item stagger '+stagger+'"><div class="list-year">'+year+'</div><div style="flex:1"><div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">';
+  html += '<h3 class="list-title">'+title+'</h3>';
+  if(tag) html += '<span class="tag" style="background:#5C725212;color:var(--accent);margin:0">'+tag+'</span>';
+  html += '</div><p class="card-desc" style="margin-top:4px">'+desc+'</p>';
+  if(photo) html += '<div style="margin-top:10px;width:100%;max-width:280px;height:160px;border-radius:10px;background:var(--cream);border:1px dashed var(--border);display:flex;align-items:center;justify-content:center"><span style="font-size:11px;color:var(--text-muted);letter-spacing:2px;text-transform:uppercase">Photo</span></div>';
+  html += '</div></div>';
   return html;
 }
 
@@ -895,13 +869,10 @@ pages.sports = () => `
 `;
 
 function buildActivity(emoji, label, stagger) {
-  return `<div class="stagger ${stagger}" style="background:var(--warm);border-radius:16px;padding:28px 20px;border:1px solid #C4CCBE50;text-align:center;transition:transform 0.3s,box-shadow 0.3s;cursor:default" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 10px 28px #C4CCBE35'" onmouseout="this.style.transform='none';this.style.boxShadow='none'">
-    <div style="font-size:32px;margin-bottom:10px">${emoji}</div>
-    <div style="font-family:'Instrument Serif',serif;font-size:17px;color:var(--text)">${label}</div>
-  </div>`;
+  return '<div class="stagger '+stagger+'" style="background:var(--warm);border-radius:16px;padding:28px 20px;border:1px solid #C4CCBE50;text-align:center;transition:transform 0.3s,box-shadow 0.3s;cursor:default" onmouseover="this.style.transform=\'translateY(-3px)\';this.style.boxShadow=\'0 10px 28px #C4CCBE35\'" onmouseout="this.style.transform=\'none\';this.style.boxShadow=\'none\'"><div style="font-size:32px;margin-bottom:10px">'+emoji+'</div><div style="font-family:Instrument Serif,serif;font-size:17px;color:var(--text)">'+label+'</div></div>';
 }
 
-// FOOTER (appended to each page)
+// FOOTER
 function addFooter() {
   const content = document.getElementById('content');
   content.innerHTML += `
@@ -912,9 +883,9 @@ function addFooter() {
           Open to Data Analyst, Data Scientist, and Statistician roles
         </p>
         <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
-          <a href="#" class="btn-secondary">LinkedIn</a>
-          <a href="#" class="btn-secondary">GitHub</a>
-          <a href="mailto:your@email.com" class="btn-secondary">Email</a>
+          <a href="https://linkedin.com/in/malavikamampally" class="btn-secondary">LinkedIn</a>
+          <a href="https://github.com/malavika-vm" class="btn-secondary">GitHub</a>
+          <a href="mailto:malavikamampally@gmail.com" class="btn-secondary">Email</a>
           <a href="#" class="btn-primary">Resume ↗</a>
         </div>
         <div style="margin-top:40px;font-size:10px;color:#7E8A7A60;letter-spacing:3px">© 2025 MVM</div>
@@ -924,16 +895,16 @@ function addFooter() {
 }
 
 // INIT
-function init() {
-  buildNav();
-  renderPage();
-}
-
 function renderPage() {
   const content = document.getElementById('content');
   content.innerHTML = pages[currentPage]();
   addFooter();
   if(currentPage === 'education') edRenderDynamic();
+}
+
+function init() {
+  buildNav();
+  renderPage();
 }
 
 init();
