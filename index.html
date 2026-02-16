@@ -284,12 +284,12 @@ const PAGES = [
   { id: 'about', label: 'About' },
   { id: 'education', label: 'Education' },
   { id: 'experience', label: 'Experience' },
-  { id: 'research', label: 'Research' },
+  { id: 'research', label: 'Publications' },
   { id: 'credentials', label: 'Credentials' },
   { id: 'competitions', label: 'Competitions' },
   { id: 'art', label: 'Art' },
   { id: 'volunteering', label: 'Giving Back' },
-  { id: 'sports', label: 'Sports' },
+  { id: 'sports', label: 'Off the Clock' },
 ];
 
 let currentPage = 'home';
@@ -355,7 +355,8 @@ pages.home = () => `
   <div style="position:absolute;left:5%;bottom:12%;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,#8A9FA810 0%,transparent 65%)"></div>
   <div style="position:absolute;left:30%;top:5%;width:300px;height:200px;background:radial-gradient(ellipse,#7B947008 0%,transparent 60%);filter:blur(30px)"></div>
 
-  <div style="position:relative;max-width:860px;margin:0 auto;width:100%">
+  <div style="position:relative;max-width:1000px;margin:0 auto;width:100%;display:flex;align-items:center;gap:48px;flex-wrap:wrap">
+    <div style="flex:1;min-width:300px">
     <div class="stagger s1">
       <p style="font-size:12px;color:var(--text-muted);letter-spacing:5px;text-transform:uppercase;margin-bottom:20px;font-weight:500">
         Statistician · Data Scientist · Designer
@@ -370,7 +371,7 @@ pages.home = () => `
       <div style="display:flex;align-items:center;gap:14px;margin-top:24px">
         <div style="height:1.5px;width:36px;background:var(--accent)"></div>
         <p style="font-size:15px;color:var(--text-mid);font-weight:400;line-height:1.6;max-width:420px">
-          Turning data into decisions. Currently finishing my M.S. in Statistics at UNC Chapel Hill.
+          Turning data into decisions. M.S. in Statistics from UNC Chapel Hill.
         </p>
       </div>
     </div>
@@ -380,18 +381,14 @@ pages.home = () => `
         <button class="btn-secondary" onclick="navigate('about')">About Me</button>
       </div>
     </div>
-    <div class="stagger s5">
-      <div style="display:flex;gap:32px;margin-top:56px;flex-wrap:wrap">
-        <div><div class="stat-num">5</div><div class="stat-label">Institutions</div></div>
-        <div><div class="stat-num">#1</div><div class="stat-label">Valedictorian</div></div>
-        <div><div class="stat-num">3</div><div class="stat-label">Actuarial Exams</div></div>
-        <div><div class="stat-num">10+</div><div class="stat-label">Years of Music</div></div>
-      </div>
-    </div>
-    <div class="stagger s6" style="margin-top:60px">
+    <div class="stagger s5" style="margin-top:60px">
       <span style="font-family:'Instrument Serif',serif;font-size:14px;color:var(--text-muted);font-style:italic;letter-spacing:1px">
         by <span style="font-size:18px;color:var(--text-mid);font-style:normal">mvm</span>
       </span>
+    </div>
+    </div>
+    <div class="stagger s3" style="flex-shrink:0">
+      <img src="hero-photo.jpg" alt="Malavika" style="width:clamp(240px,28vw,320px);height:clamp(320px,38vw,440px);object-fit:cover;object-position:center;border-radius:18px;border:1px solid #C4CCBE30" />
     </div>
   </div>
 </div>
@@ -411,7 +408,7 @@ pages.about = () => `
   <div class="stagger s2" style="margin-top:36px">
     <div class="card" style="cursor:default">
       <div style="display:flex;gap:36px;flex-wrap:wrap;align-items:flex-start">
-        <img src="photo.jpg" alt="Malavika Mampally" style="width:200px;height:260px;border-radius:14px;object-fit:cover;object-position:center top;flex-shrink:0;border:1px solid #C4CCBE40" />
+        <img src="about-photo.jpg" alt="Malavika Mampally" style="width:200px;height:260px;border-radius:14px;object-fit:cover;object-position:center top;flex-shrink:0;border:1px solid #C4CCBE40" />
         <div style="flex:1;min-width:260px">
           <h3 style="font-family:'Instrument Serif',serif;font-size:28px;color:var(--text);font-weight:400;margin-bottom:4px">
             Malavika Mampally
@@ -445,18 +442,63 @@ pages.about = () => `
 `;
 
 // EDUCATION
-pages.education = () => {
-  const main = [
-    { year:'2023–25', school:'UNC Chapel Hill', loc:'North Carolina', degree:'M.S. Statistics, Analytics & Data Science', color:'var(--blue)', courses:['Statistical Consulting','Sports Analytics','Applied Statistics','Stochastic Modelling','Knowledge Graphs','Design Thinking'] },
-    { year:'2022–23', school:'University of Mumbai', degree:'PG Diploma, Applied Statistics & Software', color:'var(--accent)', highlights:[{n:'#1',l:'Valedictorian'},{n:'100/100',l:'Healthcare Stats'},{n:'98/100',l:'Six Sigma'}], courses:['Market Research','Healthcare & Clinical Research','Six Sigma','Business Analytics'], extra:'Class Representative' },
-    { year:'2019–22', school:"St. Xavier's College", loc:'Mumbai', degree:'B.Sc. Statistics, Mathematics & Economics', color:'var(--sage)', highlights:[{n:'9.69',l:'CGPA'},{n:'Top 1%',l:'Economics'}], tag:'Stats Major' },
-  ];
-  const earlier = [
-    { year:'2019', school:'Junior College', degree:'Maharashtra State Board HSC', color:'var(--mauve)', highlights:[{n:'96/100',l:'Math'},{n:'86%',l:'Average'}] },
-    { year:'2017', school:'Gokuldham High School', loc:'Goregaon', degree:'ICSE Board', color:'var(--text-muted)', highlights:[{n:'99/100',l:'Math'},{n:'95.8%',l:'Average'},{n:'3rd',l:'Rank'}] },
-  ];
+// EDUCATION STATE
+const edMain = [
+  { year:'2023–25', school:'UNC Chapel Hill', loc:'North Carolina', degree:'M.S. Statistics, Analytics & Data Science', color:'var(--blue)', courses:['Statistical Consulting','Sports Analytics','Applied Statistics','Stochastic Modelling','Knowledge Graphs','Design Thinking'] },
+  { year:'2022–23', school:'University of Mumbai', degree:'PG Diploma, Applied Statistics & Software', color:'var(--accent)', highlights:[{n:'#1',l:'Valedictorian'},{n:'100/100',l:'Healthcare Statistics'},{n:'98/100',l:'Lean Six Sigma Techinques'}], courses:['Market Research','Healthcare & Clinical Research','Six Sigma','Business Analytics'], extra:'Class Representative' },
+  { year:'2019–22', school:"St. Xavier's College", loc:'Mumbai', degree:'B.Sc. Statistics, Mathematics & Economics', color:'var(--sage)', highlights:[{n:'9.69',l:'CGPA'},{n:'Top 1%',l:'Economics'}], tag:'Stats Major' },
+];
+const edEarlier = [
+  { year:'2019', school:'Junior College', degree:'Maharashtra State Board HSC', color:'var(--mauve)', highlights:[{n:'96/100',l:'Math'},{n:'86%',l:'Average'}] },
+  { year:'2017', school:'Gokuldham High School', loc:'10th Grade', degree:'ICSE Board', color:'var(--text-muted)', highlights:[{n:'99/100',l:'Math'},{n:'95.8%',l:'Average'}] },
+];
+let edShowEarlier = false;
+let edActiveIdx = 0;
 
-  return `
+function edGetAll() { return edShowEarlier ? [...edMain, ...edEarlier] : edMain; }
+
+function edBuildCard(ed) {
+  let html = '<div class="card" style="cursor:default;animation:fadeIn 0.35s ease">';
+  html += '<div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px"><div>';
+  html += '<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:4px">';
+  html += '<h3 style="font-family:Instrument Serif,serif;font-size:26px;color:var(--text);font-weight:400">'+ed.school+'</h3>';
+  if(ed.tag) html += '<span class="tag" style="background:'+ed.color+'12;color:'+ed.color+'">'+ed.tag+'</span>';
+  html += '</div>';
+  if(ed.loc) html += '<p style="color:var(--text-muted);font-size:12px">'+ed.loc+'</p>';
+  html += '<p style="color:'+ed.color+';font-size:14px;margin-top:4px;font-weight:500">'+ed.degree+'</p>';
+  if(ed.extra) html += '<p style="color:var(--accent);font-size:11px;margin-top:4px;font-weight:600;letter-spacing:0.5px">'+ed.extra+'</p>';
+  html += '</div></div>';
+  if(ed.highlights) {
+    html += '<div style="display:flex;gap:12px;margin-top:24px;flex-wrap:wrap">';
+    ed.highlights.forEach(function(h) {
+      html += '<div class="highlight-box"><div class="highlight-num" style="color:'+ed.color+'">'+h.n+'</div><div class="highlight-label">'+h.l+'</div></div>';
+    });
+    html += '</div>';
+  }
+  if(ed.courses) {
+    html += '<div style="margin-top:20px"><div style="font-size:10px;color:var(--text-muted);letter-spacing:2.5px;text-transform:uppercase;font-weight:600;margin-bottom:10px">Key Coursework</div><div style="display:flex;flex-wrap:wrap;gap:6px">';
+    ed.courses.forEach(function(c) { html += '<span class="course-tag">'+c+'</span>'; });
+    html += '</div></div>';
+  }
+  html += '</div>';
+  return html;
+}
+
+function edRenderDynamic() {
+  const all = edGetAll();
+  const pillsEl = document.getElementById('edPills');
+  const cardEl = document.getElementById('edCard');
+  if(!pillsEl || !cardEl) return;
+  pillsEl.innerHTML = all.map(function(t,i) {
+    return '<button class="pill '+(edActiveIdx===i?'active':'')+'" onclick="edNav('+i+')">'+t.year+'</button>';
+  }).join('') + '<button class="pill-dashed" onclick="edToggle()">'+(edShowEarlier?'Hide ×':'Earlier +')+'</button>';
+  cardEl.innerHTML = edBuildCard(all[edActiveIdx]);
+}
+
+function edNav(i) { edActiveIdx = i; edRenderDynamic(); }
+function edToggle() { edShowEarlier = !edShowEarlier; if(!edShowEarlier && edActiveIdx >= edMain.length) edActiveIdx=0; edRenderDynamic(); }
+
+pages.education = () => `
 <div class="page" style="max-width:960px;margin:0 auto">
   <div class="stagger s1">
     <div class="section-label">
@@ -478,61 +520,7 @@ pages.education = () => {
     </div>
   </div>
 </div>
-
-<script>
-(function(){
-  const main = ${JSON.stringify(main)};
-  const earlier = ${JSON.stringify(earlier)};
-  let showEarlier = false;
-  let activeIdx = 0;
-
-  function getAll() { return showEarlier ? [...main, ...earlier] : main; }
-
-  function renderPills() {
-    const all = getAll();
-    document.getElementById('edPills').innerHTML = all.map((t,i) =>
-      '<button class="pill '+(activeIdx===i?'active':'')+'" onclick="window._edNav('+i+')">'+t.year+'</button>'
-    ).join('') + '<button class="pill-dashed" onclick="window._edToggle()">'+(showEarlier?'Hide ×':'Earlier +')+'</button>';
-  }
-
-  function renderCard() {
-    const ed = getAll()[activeIdx];
-    let html = '<div class="card" style="cursor:default;animation:fadeIn 0.35s ease">';
-    html += '<div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px"><div>';
-    html += '<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:4px">';
-    html += '<h3 style="font-family:Instrument Serif,serif;font-size:26px;color:var(--text);font-weight:400">'+ed.school+'</h3>';
-    if(ed.tag) html += '<span class="tag" style="background:'+ed.color+'12;color:'+ed.color+'">'+ed.tag+'</span>';
-    html += '</div>';
-    if(ed.loc) html += '<p style="color:var(--text-muted);font-size:12px">'+ed.loc+'</p>';
-    html += '<p style="color:'+ed.color+';font-size:14px;margin-top:4px;font-weight:500">'+ed.degree+'</p>';
-    if(ed.extra) html += '<p style="color:var(--accent);font-size:11px;margin-top:4px;font-weight:600;letter-spacing:0.5px">'+ed.extra+'</p>';
-    html += '</div></div>';
-
-    if(ed.highlights) {
-      html += '<div style="display:flex;gap:12px;margin-top:24px;flex-wrap:wrap">';
-      ed.highlights.forEach(h => {
-        html += '<div class="highlight-box"><div class="highlight-num" style="color:'+ed.color+'">'+h.n+'</div><div class="highlight-label">'+h.l+'</div></div>';
-      });
-      html += '</div>';
-    }
-
-    if(ed.courses) {
-      html += '<div style="margin-top:20px"><div style="font-size:10px;color:var(--text-muted);letter-spacing:2.5px;text-transform:uppercase;font-weight:600;margin-bottom:10px">Key Coursework</div><div style="display:flex;flex-wrap:wrap;gap:6px">';
-      ed.courses.forEach(c => { html += '<span class="course-tag">'+c+'</span>'; });
-      html += '</div></div>';
-    }
-    html += '</div>';
-    document.getElementById('edCard').innerHTML = html;
-  }
-
-  window._edNav = function(i) { activeIdx = i; renderPills(); renderCard(); };
-  window._edToggle = function() { showEarlier = !showEarlier; if(!showEarlier && activeIdx >= main.length) activeIdx=0; renderPills(); renderCard(); };
-
-  renderPills(); renderCard();
-})();
-<\/script>
 `;
-};
 
 // EXPERIENCE
 pages.experience = () => `
@@ -564,9 +552,11 @@ pages.experience = () => `
       </ul>
       <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:14px">
         <span class="course-tag">Python</span>
-        <span class="course-tag">SQL</span>
-        <span class="course-tag">ML Models</span>
+        <span class="course-tag">LangChain</span>
+        <span class="course-tag">Prompt Engineering</span>
         <span class="course-tag">Financial Services</span>
+        <span class="course-tag">Docker</span>
+        <span class="course-tag">Agentic AI</span>
       </div>
     </div>
 
@@ -588,9 +578,10 @@ pages.experience = () => `
       <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:14px">
         <span class="course-tag">R</span>
         <span class="course-tag">Python</span>
-        <span class="course-tag">OLS / Logistic Regression</span>
+        <span class="course-tag">Logistic Regression</span>
         <span class="course-tag">A/B Testing</span>
         <span class="course-tag">LLM Evaluation</span>
+        <span class="course-tag">Data Visualization</span>
       </div>
     </div>
 
@@ -614,7 +605,8 @@ pages.experience = () => `
         <span class="course-tag">Tableau</span>
         <span class="course-tag">REDCap</span>
         <span class="course-tag">Longitudinal Analysis</span>
-        <span class="course-tag">Fisher's Exact Test</span>
+        <span class="course-tag">Healthcare</span>
+        <span class="course-tag">Process Improvement</span>
       </div>
     </div>
 
@@ -638,6 +630,8 @@ pages.experience = () => `
         <span class="course-tag">Tableau</span>
         <span class="course-tag">A/B Testing</span>
         <span class="course-tag">KPI Design</span>
+        <span class="course-tag">Performance Analytics</span>
+        <span class="course-tag">Program Evaluation</span>
       </div>
     </div>
 
@@ -660,6 +654,7 @@ pages.experience = () => `
         <span class="course-tag">Regression</span>
         <span class="course-tag">Insurance Analytics</span>
         <span class="course-tag">Data Validation</span>
+        <span class="course-tag">Advanced Excel</span>
       </div>
     </div>
 
@@ -797,13 +792,13 @@ pages.competitions = () => `
   </div>
 
   <div style="display:grid;gap:14px;margin-top:36px">
-    ${buildComp('Stat-Attack Data Analysis Competition',"St. Xavier's College, Mumbai",'2022','Rank 3','The Outliers','var(--accent)','Led a team of 3 analyzing employee attrition data. Developed predictive models and actionable workforce retention insights.','Team Lead','s2')}
-    ${buildComp('Duke-UNC DataFest','ASA DataFest','2024','Participant','The Mean Girls','var(--blue)','Competed in one of the largest undergraduate data analysis competitions in the US. A 48-hour analysis sprint.',null,'s3')}
+    ${buildComp("ASA DataFest @ Duke 2024","Duke University, Dept. of Statistical Science","2024","Participant","The Mean Girls","var(--blue)","Collaborated in a 48-hour data hackathon hosted by Duke University as part of the national ASA DataFest competition series. Analyzed anonymized student interaction data from CourseKata, a statistics and data science learning platform, to uncover insights on student engagement patterns and learning outcomes. Presented findings to a panel of professional statisticians and industry judges. Applied statistical modeling, exploratory data analysis, and data visualization to understand how usage behaviors influenced academic performance.",null,"s2",["EDA","Statistical Modeling","Data Visualization","48-Hour Sprint"])}
+    ${buildComp("Stat-Attack Data Analysis Competition","St. Xaviers College, Mumbai","2022","Rank 3","The Outliers","var(--accent)","Led a team of 3 in a 24-hour data analysis sprint tackling employee attrition data. Discovered a gender pay gap through exploratory analysis and built predictive models for workforce retention insights.","Team Lead","s3",["People Analytics","Gender Pay Gap","Predictive Modeling"])}
   </div>
 </div>
 `;
 
-function buildComp(title, org, year, rank, team, color, desc, role, stagger) {
+function buildComp(title, org, year, rank, team, color, desc, role, stagger, tags) {
   let html = `<div class="card stagger ${stagger}" style="cursor:default;position:relative;overflow:hidden">`;
   html += `<div style="position:absolute;right:16px;top:-18px;font-family:'Instrument Serif',serif;font-size:96px;font-weight:400;color:#C4CCBE18;line-height:1">${year}</div>`;
   html += `<div style="position:relative">`;
@@ -815,6 +810,7 @@ function buildComp(title, org, year, rank, team, color, desc, role, stagger) {
   html += `<p style="font-size:13px;color:${color};font-weight:600;margin:0 0 2px">${org}</p>`;
   html += `<p style="font-size:13px;color:var(--text-muted);margin:0 0 12px">Team: <span style="color:var(--text-mid);font-weight:500">${team}</span></p>`;
   html += `<p class="card-desc" style="margin:0">${desc}</p>`;
+  if(tags) { html += `<div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:14px">`; tags.forEach(t => { html += `<span class="course-tag">${t}</span>`; }); html += `</div>`; }
   html += `</div></div>`;
   return html;
 }
@@ -858,20 +854,22 @@ pages.volunteering = () => `
     <div class="title-accent"></div>
   </div>
   <div style="margin-top:36px">
-    ${buildVolItem("2019–20","Boys' Shelter Tutor","Tutored 10th grade boys from a shelter in English, History, and Mathematics.",null,'s2')}
-    ${buildVolItem("2020","St. Vincent de Paul Tutor","Remote math tutoring for 6th grade underprivileged girls during COVID. Created homework, tests, and study materials.",null,'s3')}
-    ${buildVolItem("2021–23","Leo Club of Vikas","Founding Vice President. Organised food drives, beach cleanups, and community events for underprivileged students.","Founding VP",'s4')}
-    ${buildVolItem("2022","Stats Expo, St. Xavier's","Ran the statistics department booth at the Science Expo with interactive activities.",null,'s5')}
-    ${buildVolItem("2024","Stats Expo, UNC Chapel Hill","Ran the statistics department booth at UNC's science expo with interactive demonstrations.",null,'s6')}
+    ${buildVolItem("2024","UNC Science Expo, UNC Chapel Hill","Represented the Department of Statistics and Operations Research at UNC's annual Science Expo, attended by hundreds of community members and families. Demonstrated interactive probability and statistics games including the Galton Board, Monty Hall Problem, and MIT's Mind Reader using visual aids and hands-on setups. Explained the statistical concepts behind each game to both children and adults, sparking curiosity and engagement around data and decision-making.","📷",null,'s2')}
+    ${buildVolItem("2022","Popularization of Science Fair, St. Xavier's","Ran the statistics department booth at the Science Expo. Created an interactive cricket board game where players bet on their score based on the sum of two dice, teaching probability distributions and expected outcomes through gameplay.","📷",null,'s3')}
+    ${buildVolItem("2021–23","Leo Club of Vikas","Founding Vice President. Organised food drives, beach cleanups, and community events for underprivileged students.","📷","Founding VP",'s4')}
+    ${buildVolItem("2020","St. Vincent de Paul Tutor","Remote math tutoring for 6th grade underprivileged girls during COVID. Created homework, tests, and study materials.",null,null,'s5')}
+    ${buildVolItem("2019–20","Boys' Shelter Tutor","Tutored 10th grade boys from a shelter in English, History, and Mathematics.",null,null,'s6')}
   </div>
 </div>
 `;
 
-function buildVolItem(year, title, desc, tag, stagger) {
+function buildVolItem(year, title, desc, photo, tag, stagger) {
   let html = `<div class="list-item stagger ${stagger}"><div class="list-year">${year}</div><div style="flex:1"><div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">`;
   html += `<h3 class="list-title">${title}</h3>`;
   if(tag) html += `<span class="tag" style="background:#5C725212;color:var(--accent);margin:0">${tag}</span>`;
-  html += `</div><p class="card-desc" style="margin-top:4px">${desc}</p></div></div>`;
+  html += `</div><p class="card-desc" style="margin-top:4px">${desc}</p>`;
+  if(photo) html += `<div style="margin-top:10px;width:100%;max-width:280px;height:160px;border-radius:10px;background:var(--cream);border:1px dashed var(--border);display:flex;align-items:center;justify-content:center"><span style="font-size:11px;color:var(--text-muted);letter-spacing:2px;text-transform:uppercase">Photo</span></div>`;
+  html += `</div></div>`;
   return html;
 }
 
@@ -883,33 +881,23 @@ pages.sports = () => `
       <span class="section-num">08</span><div class="section-line"></div><span class="section-name">Sports</span>
     </div>
     <h2 class="page-title">Off the clock</h2>
-    <p style="font-family:'Instrument Serif',serif;font-size:18px;color:var(--text-muted);margin-top:8px;font-style:italic">A decade of racquet sports</p>
     <div class="title-accent"></div>
   </div>
 
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:36px">
-    ${buildSportCard('2014','District Badminton','Represented school in district-level tournament','b','s2')}
-    ${buildSportCard('2014–22','8 Years of Play','Competitive and recreational badminton','b','s3')}
-    ${buildSportCard('2022','Throwball 🥈','Runner-up in apartment tournament','b','s4')}
-    ${buildSportCard('2022','Badminton 🏆','1st place inter-apartment tournament','b','s5')}
-    ${buildSportCard('2024–','Pickleball','Plays frequently and above average','p','s6')}
-  </div>
-
-  <div class="stagger s6" style="margin-top:28px;padding:14px 24px;background:var(--warm);border-radius:14px;border:1px solid #C4CCBE50;display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap">
-    <span style="font-family:'Instrument Serif',serif;font-size:28px;color:var(--accent)">10+</span>
-    <span style="color:var(--text-muted);font-size:13px">years of racquet sports</span>
-    <div style="width:1px;height:16px;background:var(--border)"></div>
-    <span style="font-size:12px;color:var(--text-muted)">Badminton → Pickleball</span>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-top:36px">
+    ${buildActivity('🏸','Badminton','s2')}
+    ${buildActivity('🏓','Pickleball','s3')}
+    ${buildActivity('🥾','Hiking','s4')}
+    ${buildActivity('🛶','Kayaking','s5')}
+    ${buildActivity('🧗','Rock Climbing','s6')}
   </div>
 </div>
 `;
 
-function buildSportCard(year, label, desc, era, stagger) {
-  const color = era === 'b' ? 'var(--accent)' : 'var(--blue)';
-  return `<div class="stagger ${stagger}" style="background:var(--warm);border-radius:16px;padding:20px;border:1px solid #C4CCBE50">
-    <div style="font-size:11px;color:${color};font-weight:700;letter-spacing:1.5px;margin-bottom:6px">${year}</div>
-    <div style="font-family:'Instrument Serif',serif;font-size:18px;color:var(--text);margin-bottom:4px">${label}</div>
-    <div style="font-size:12px;color:var(--text-muted);line-height:1.6">${desc}</div>
+function buildActivity(emoji, label, stagger) {
+  return `<div class="stagger ${stagger}" style="background:var(--warm);border-radius:16px;padding:28px 20px;border:1px solid #C4CCBE50;text-align:center;transition:transform 0.3s,box-shadow 0.3s;cursor:default" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 10px 28px #C4CCBE35'" onmouseout="this.style.transform='none';this.style.boxShadow='none'">
+    <div style="font-size:32px;margin-bottom:10px">${emoji}</div>
+    <div style="font-family:'Instrument Serif',serif;font-size:17px;color:var(--text)">${label}</div>
   </div>`;
 }
 
@@ -945,6 +933,7 @@ function renderPage() {
   const content = document.getElementById('content');
   content.innerHTML = pages[currentPage]();
   addFooter();
+  if(currentPage === 'education') edRenderDynamic();
 }
 
 init();
