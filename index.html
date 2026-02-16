@@ -365,7 +365,7 @@ pages.home = () => `
       </div>
       <div class="stagger s4">
         <div style="display:flex;gap:12px;margin-top:44px;flex-wrap:wrap">
-          <a href="#" class="btn-primary">View Resume</a>
+          <a href="resume.pdf" target="_blank" class="btn-primary">View Resume</a>
           <button class="btn-secondary" onclick="navigate('about')">About Me</button>
         </div>
       </div>
@@ -402,10 +402,10 @@ pages.about = () => `
             Malavika Mampally
           </h3>
           <p style="font-size:13px;color:var(--accent);font-weight:600;margin-bottom:16px">
-            Statistician · Data Scientist · Designer
+            Statistician · Data Scientist · Designer · Teacher
           </p>
           <p style="color:var(--text-mid);font-size:14px;line-height:1.8;margin-bottom:14px">
-            Hi! My name is Malavika (Mah-luh-vi-kah) and I am a Statistician by profession. I spent 20+ years in the Indian city of dreams, Mumbai, where I did my schooling and earned a B.S. in Statistics at St. Xavier's College Mumbai, followed by a postgrad diploma in Applied Statistics. I then moved to North Carolina to become a Tar Heel 🩵 (meanwhile also completing my Master's in Statistics at UNC Chapel Hill).
+            Hi! My name is Malavika (Mah-luh-vi-kah) and I am a Statistician by profession. I spent 20+ years in the Indian city of dreams, Mumbai, where I did my schooling and earned a B.S. in Statistics at St. Xavier's College Mumbai, followed by a postgrad diploma in Applied Statistics. I then moved to North Carolina to become a Tar Heel (meanwhile also completing my Master's in Statistics at UNC Chapel Hill).
           </p>
           <p style="color:var(--text-mid);font-size:14px;line-height:1.8;margin-bottom:14px">
             In all my academic years, what has always been constant is teaching. It started out as mandatory volunteer hours at St. Xavier's and as a way of financing my life abroad as a Teaching Assistant at UNC, but it grew to be far more valuable than a mere responsibility. Developing deep expertise in a subject, putting yourself in the student's shoes, and then articulating it in a way they understand is an underrated skill you pick up while teaching. That ability to break down complexity and communicate it clearly is something that carries over directly into how I work with stakeholders, present findings, and translate analysis into action.
@@ -828,21 +828,23 @@ pages.volunteering = () => `
     <div class="title-accent"></div>
   </div>
   <div style="margin-top:36px">
-    ${buildVolItem("2024","UNC Science Expo, UNC Chapel Hill","Represented the Department of Statistics and Operations Research at UNC's annual Science Expo, attended by hundreds of community members and families. Demonstrated interactive probability and statistics games including the Galton Board, Monty Hall Problem, and MIT's Mind Reader using visual aids and hands-on setups. Explained the statistical concepts behind each game to both children and adults, sparking curiosity and engagement around data and decision-making.","📷",null,'s2')}
-    ${buildVolItem("2022","Popularization of Science Fair, St. Xavier's","Ran the statistics department booth at the Science Expo. Created an interactive cricket board game where players bet on their score based on the sum of two dice, teaching probability distributions and expected outcomes through gameplay.","📷",null,'s3')}
-    ${buildVolItem("2021-23","Leo Club of Vikas","Founding Vice President. Organised food drives, beach cleanups, and community events for underprivileged students.","📷","Founding VP",'s4')}
-    ${buildVolItem("2020","St. Vincent de Paul Tutor","Remote math tutoring for 6th grade underprivileged girls during COVID. Created homework, tests, and study materials.",null,null,'s5')}
-    ${buildVolItem("2019-20","Boys' Shelter Tutor","Tutored 10th grade boys from a shelter in English, History, and Mathematics.",null,null,'s6')}
+    ${buildVolItem("2024","Volunteer","Dept. of Statistics and Operations Research, UNC Chapel Hill","Represented the Department of Statistics and Operations Research at UNC's annual Science Expo, attended by hundreds of community members and families. Demonstrated interactive probability and statistics games including the Galton Board, Monty Hall Problem, and MIT's Mind Reader using visual aids and hands-on setups. Explained the statistical concepts behind each game to both children and adults, sparking curiosity and engagement around data and decision-making.","unc-expo.png",null,'s2')}
+    ${buildVolItem("2022","Volunteer","Dept. of Statistics, St. Xavier's College","Ran the statistics department booth at the Popularization of Science Fair. Created an interactive cricket board game where players bet on their score based on the sum of two dice, teaching probability distributions and expected outcomes through gameplay.","sxc-expo.jpg",null,'s3')}
+    ${buildVolItem("2021-23","Vice President, Leo Club of Mumbai Vikas","Lions Club International","Founding Vice President. Organised food drives, beach cleanups, and community events for underprivileged students.",null,"https://www.instagram.com/p/CjihDfrvNpm/",'s4')}
+    ${buildVolItem("2020","6th Grade Math Teacher","St. Vincent de Paul","Remote math tutoring for 6th grade underprivileged girls during COVID. Created homework, tests, and study materials.",null,null,'s5')}
+    ${buildVolItem("2019-20","10th Grade Math, History and English Teacher","Salam Balak Trust Shelter for Boys","Tutored 10th grade boys from a shelter in English, History, and Mathematics.",null,null,'s6')}
   </div>
 </div>
 `;
 
-function buildVolItem(year, title, desc, photo, tag, stagger) {
+function buildVolItem(year, title, org, desc, photo, link, stagger) {
   let html = '<div class="list-item stagger '+stagger+'"><div class="list-year">'+year+'</div><div style="flex:1"><div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">';
   html += '<h3 class="list-title">'+title+'</h3>';
-  if(tag) html += '<span class="tag" style="background:#5C725212;color:var(--accent);margin:0">'+tag+'</span>';
-  html += '</div><p class="card-desc" style="margin-top:4px">'+desc+'</p>';
-  if(photo) html += '<div style="margin-top:10px;width:100%;max-width:280px;height:160px;border-radius:10px;background:var(--cream);border:1px dashed var(--border);display:flex;align-items:center;justify-content:center"><span style="font-size:11px;color:var(--text-muted);letter-spacing:2px;text-transform:uppercase">Photo</span></div>';
+  html += '</div>';
+  html += '<p style="font-size:12px;color:var(--accent);font-weight:600;margin-top:2px">'+org+'</p>';
+  html += '<p class="card-desc" style="margin-top:6px">'+desc+'</p>';
+  if(photo) html += '<img src="'+photo+'" alt="'+title+'" style="margin-top:10px;width:100%;max-width:320px;height:200px;object-fit:cover;border-radius:10px;border:1px solid #C4CCBE40" />';
+  if(link) html += '<div style="margin-top:10px"><a href="'+link+'" target="_blank" style="display:inline-flex;align-items:center;gap:6px;color:var(--accent);font-size:12px;font-weight:600;text-decoration:none;letter-spacing:0.5px;border:1.5px solid var(--accent);padding:6px 16px;border-radius:100px;transition:background 0.3s,color 0.3s" onmouseover="this.style.background=\'#5C7252\';this.style.color=\'#F2F4F0\'" onmouseout="this.style.background=\'transparent\';this.style.color=\'#5C7252\'">View on Instagram ↗</a></div>';
   html += '</div></div>';
   return html;
 }
@@ -886,7 +888,7 @@ function addFooter() {
           <a href="https://linkedin.com/in/malavikamampally" class="btn-secondary">LinkedIn</a>
           <a href="https://github.com/malavika-vm" class="btn-secondary">GitHub</a>
           <a href="mailto:malavikamampally@gmail.com" class="btn-secondary">Email</a>
-          <a href="#" class="btn-primary">Resume ↗</a>
+          <a href="resume.pdf" target="_blank" class="btn-primary">Resume ↗</a>
         </div>
         <div style="margin-top:40px;font-size:10px;color:#7E8A7A60;letter-spacing:3px">© 2025 MVM</div>
       </div>
