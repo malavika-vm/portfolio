@@ -256,7 +256,6 @@ button { font-family: 'Outfit', sans-serif; }
   .page { padding: 110px 20px 32px; }
   .card-grid { grid-template-columns: 1fr; }
 
-  /* Hero mobile layout */
   .hero-page {
     flex-direction: column !important;
     min-height: auto !important;
@@ -279,7 +278,6 @@ button { font-family: 'Outfit', sans-serif; }
     position: absolute;
   }
 
-  /* Tighten spacing on mobile */
   .hero-page .btn-primary,
   .hero-page .btn-secondary {
     padding: 11px 26px;
@@ -324,7 +322,7 @@ button { font-family: 'Outfit', sans-serif; }
   <div class="nav-inner">
     <button class="nav-logo" onclick="navigate('home')">mvm</button>
     <div class="nav-links" id="navLinks"></div>
-    <button class="mobile-toggle" id="mobileToggle" onclick="toggleMobile()">≡</button>
+    <button class="mobile-toggle" id="mobileToggle" onclick="toggleMobile()">&#8801;</button>
   </div>
 </nav>
 
@@ -343,6 +341,7 @@ const PAGES = [
   { id: 'about', label: 'About' },
   { id: 'education', label: 'Education' },
   { id: 'experience', label: 'Experience' },
+  { id: 'projects', label: 'Projects' },
   { id: 'research', label: 'Publications' },
   { id: 'credentials', label: 'Credentials' },
   { id: 'competitions', label: 'Competitions' },
@@ -382,7 +381,7 @@ function buildNav() {
 function toggleMobile() {
   mobileOpen = !mobileOpen;
   document.getElementById('mobileMenu').classList.toggle('open', mobileOpen);
-  document.getElementById('mobileToggle').textContent = mobileOpen ? '✕' : '≡';
+  document.getElementById('mobileToggle').innerHTML = mobileOpen ? '&#10005;' : '&#8801;';
 }
 
 function navigate(pageId) {
@@ -405,7 +404,7 @@ pages.home = () => `
     <div style="max-width:520px;margin:0 auto;width:100%">
       <div class="stagger s1">
         <p class="hero-subtitle" style="font-size:12px;color:var(--text-muted);letter-spacing:5px;text-transform:uppercase;margin-bottom:20px;font-weight:500">
-          Statistician · Data Scientist · Designer
+          Statistician &middot; Data Scientist &middot; Designer
         </p>
       </div>
       <div class="stagger s2">
@@ -413,14 +412,7 @@ pages.home = () => `
           Mala<span style="color:var(--accent)">v</span>ika
         </h1>
       </div>
-      <div class="stagger s3">
-        <div style="display:flex;align-items:center;gap:14px;margin-top:24px">
-          <div style="height:1.5px;width:36px;background:var(--accent)"></div>
-          <p style="font-size:15px;color:var(--text-mid);font-weight:400;line-height:1.6;max-width:420px">
-            Turning data into decisions. M.S. in Statistics from UNC Chapel Hill.
-          </p>
-        </div>
-      </div>
+
       <div class="stagger s4">
         <div class="hero-buttons" style="display:flex;gap:12px;margin-top:44px;flex-wrap:wrap">
           <a href="resume.pdf" target="_blank" class="btn-primary">View Resume</a>
@@ -460,7 +452,7 @@ pages.about = () => `
             Malavika Mampally
           </h3>
           <p style="font-size:13px;color:var(--accent);font-weight:600;margin-bottom:16px">
-            Statistician · Data Scientist · Designer · Teacher
+            Statistician &middot; Data Scientist &middot; Designer &middot; Teacher
           </p>
           <p style="color:var(--text-mid);font-size:14px;line-height:1.8;margin-bottom:14px">
             Hi! My name is Malavika (Mah-luh-vi-kah) and I am a Statistician by profession. I spent 20+ years in the Indian city of dreams, Mumbai, where I did my schooling and earned a B.S. in Statistics at St. Xavier's College Mumbai, followed by a postgrad diploma in Applied Statistics. I then moved to North Carolina to become a Tar Heel (meanwhile also completing my Master's in Statistics at UNC Chapel Hill).
@@ -475,9 +467,9 @@ pages.about = () => `
             Currently looking for roles in data science, analytics, or statistics where I can keep doing what I do best: finding patterns, building models, and telling the story in the numbers.
           </p>
           <div style="display:flex;gap:10px;flex-wrap:wrap">
-            <a href="mailto:malavikamampally@gmail.com" class="course-tag" style="text-decoration:none;color:var(--text-mid)">📧 malavikamampally@gmail.com</a>
-            <a href="https://linkedin.com/in/malavikamampally" target="_blank" class="course-tag" style="text-decoration:none;color:var(--text-mid)">🔗 LinkedIn</a>
-            <a href="https://github.com/malavika-vm" target="_blank" class="course-tag" style="text-decoration:none;color:var(--text-mid)">🔗 GitHub</a>
+            <a href="mailto:malavikamampally@gmail.com" class="course-tag" style="text-decoration:none;color:var(--text-mid)">&#128231; malavikamampally@gmail.com</a>
+            <a href="https://linkedin.com/in/malavikamampally" target="_blank" class="course-tag" style="text-decoration:none;color:var(--text-mid)">&#128279; LinkedIn</a>
+            <a href="https://github.com/malavika-vm" target="_blank" class="course-tag" style="text-decoration:none;color:var(--text-mid)">&#128279; GitHub</a>
           </div>
         </div>
       </div>
@@ -554,14 +546,6 @@ pages.education = () => `
 
   <div class="pill-row stagger s2" id="edPills"></div>
   <div id="edCard" class="stagger s3" style="margin-top:24px"></div>
-
-  <div class="stagger s4" style="margin-top:20px">
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px">
-      <div class="highlight-box"><div class="highlight-num">5</div><div class="highlight-label">Institutions</div></div>
-      <div class="highlight-box"><div class="highlight-num">99</div><div class="highlight-label">Math High</div></div>
-      <div class="highlight-box"><div class="highlight-num">9.69</div><div class="highlight-label">CGPA</div></div>
-    </div>
-  </div>
 </div>
 `;
 
@@ -607,7 +591,7 @@ pages.experience = () => `
           <h3 style="font-family:'Instrument Serif',serif;font-size:22px;color:var(--text);font-weight:400">Statistical Research Associate, AI Research</h3>
           <p style="font-size:13px;color:var(--accent);font-weight:600;margin-top:2px">Society-Centered AI Lab, School of Data Science & Society, UNC</p>
         </div>
-        <span style="font-size:12px;color:var(--text-muted);font-weight:500;white-space:nowrap">Jan 2025 - Dec 2025</span>
+        <span style="font-size:12px;color:var(--text-muted);font-weight:500;white-space:nowrap">Jan 2025 - Feb 2026</span>
       </div>
       <ul style="color:var(--text-mid);font-size:13px;line-height:1.8;margin-top:14px;padding-left:18px">
         <li>Led large-scale LLM benchmarking study across 627 personas, running multivariable OLS and logistic regressions across five response variables and nine demographic predictors</li>
@@ -718,6 +702,148 @@ pages.experience = () => `
 </div>
 `;
 
+// PROJECTS
+let projFilter = 'all';
+
+const projectsData = [
+  {
+    title: 'NBA Game Spread Prediction',
+    domain: 'Sports Analytics',
+    color: 'var(--accent)',
+    filter: 'ml',
+    tools: ['Python', 'Gradient Boosting', 'Random Forest', 'Feature Engineering'],
+    bullets: [
+      'Engineered novel features and built ensemble ML models (gradient boosting, random forest) to predict game spreads across 200+ games on complex scoring and behavioral data',
+      'Achieved 96% accuracy and ranked #1 among 14 teams for lowest prediction error',
+      'Demonstrated end-to-end predictive modeling pipeline: feature engineering, model selection, validation, and performance benchmarking'
+    ],
+    stat: { num: '#1', label: 'Among 14 Teams' }
+  },
+  {
+    title: 'Fraud Detection Classification',
+    domain: 'Cybersecurity',
+    color: 'var(--sage)',
+    filter: 'ml',
+    tools: ['Python', 'XGBoost', 'SVM', 'Decision Trees', 'KNN'],
+    bullets: [
+      'Built end-to-end fraud classification pipeline applying SVM, KNN, Decision Trees, and XGBoost to detect fraudulent websites across 110+ structural features',
+      'Achieved 96% accuracy with XGBoost as top-performing model; compared precision-recall tradeoffs to optimize for fraud detection rate',
+      'Evaluated feature importance to identify highest-signal predictors of fraudulent behavior, demonstrating interpretability alongside predictive performance'
+    ],
+    stat: { num: '96%', label: 'Accuracy' }
+  },
+  {
+    title: 'Life Expectancy Predictive Model',
+    domain: 'Public Health Policy',
+    color: 'var(--blue)',
+    filter: 'stats',
+    tools: ['R', 'MATLAB', 'Ridge', 'LASSO', 'PLS', 'OLS'],
+    bullets: [
+      'Built a predictive life-expectancy model with ~85% explanatory power (Adjusted R\u00B2 \u2248 0.85) using ~2,938 country-year records across 20+ predictors spanning a 15-year panel dataset',
+      'Diagnosed and resolved multicollinearity (VIF > 200), identified statistical outliers, and compared LASSO, Ridge, PLS, and OLS to select Ridge regression as optimal via lowest RMSE',
+      'Translated coefficients into actionable public-health recommendations using country case studies, identifying statistically significant drivers including schooling, income composition, and adult mortality'
+    ],
+    stat: { num: '85%', label: 'Adj. R\u00B2' }
+  },
+  {
+    title: 'Neuroscience Consulting: SC-FC Coupling',
+    domain: 'Neuroimaging Analytics',
+    color: 'var(--mauve)',
+    filter: 'stats',
+    tools: ['MATLAB', 'High-Dimensional Stats', 'Bonferroni Correction', 'Scientific Visualization'],
+    bullets: [
+      'Investigated whether structural-functional coupling (SFC) explains variation in cognitive and behavioral traits using large-scale neuroimaging data (4121 x 944 brain-vertex matrix)',
+      'Implemented vertex-wise correlations and Bonferroni-corrected hypothesis tests to identify significant brain-trait relationships; projected results onto cortical surface heatmaps',
+      'Found education years positively associated with frontal-lobe connectivity, aligning with known learning/reasoning neurobiology; delivered structured research report for neuroscience client'
+    ],
+    stat: { num: '4K+', label: 'Brain Vertices' }
+  },
+  {
+    title: 'Sephora Product Analytics',
+    domain: 'Retail Analytics',
+    color: 'var(--accent)',
+    filter: 'analytics',
+    tools: ['R', 'Docker', 'EDA', 'Makefile', 'Data Visualization'],
+    github: 'https://github.com/malavika-vm/Final_report',
+    bullets: [
+      'Analyzed product performance data from Sephora across categories, pricing, reviews, and stock behavior using a reproducible R pipeline containerized with Docker',
+      'Assessed limited edition and Sephora exclusive product lines; explored correlation between product likes and out-of-stock frequency',
+      'Built a fully reproducible report (R Markdown + Makefile + Docker) enabling one-command report generation'
+    ],
+    stat: { num: 'E2E', label: 'Dockerized' }
+  }
+];
+
+function projBuildCard(p, stagger) {
+  let html = '<div class="card stagger '+stagger+'" style="cursor:default;position:relative;overflow:hidden">';
+  html += '<div style="position:relative">';
+  html += '<div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px">';
+  html += '<div>';
+  html += '<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap">';
+  html += '<span class="tag" style="background:'+p.color+'14;color:'+p.color+';margin:0">'+p.domain+'</span>';
+  html += '</div>';
+  html += '<h3 style="font-family:Instrument Serif,serif;font-size:22px;color:var(--text);font-weight:400;margin:0">'+p.title+'</h3>';
+  html += '</div>';
+  if(p.stat) {
+    html += '<div class="highlight-box" style="min-width:80px"><div class="highlight-num" style="color:'+p.color+'">'+p.stat.num+'</div><div class="highlight-label">'+p.stat.label+'</div></div>';
+  }
+  html += '</div>';
+  html += '<ul style="color:var(--text-mid);font-size:13px;line-height:1.8;margin-top:14px;padding-left:18px">';
+  p.bullets.forEach(function(b) { html += '<li>'+b+'</li>'; });
+  html += '</ul>';
+  html += '<div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:14px">';
+  p.tools.forEach(function(t) { html += '<span class="course-tag">'+t+'</span>'; });
+  html += '</div>';
+  if(p.github) {
+    html += '<div style="margin-top:14px"><a href="'+p.github+'" target="_blank" style="display:inline-flex;align-items:center;gap:6px;color:var(--accent);font-size:12px;font-weight:600;text-decoration:none;letter-spacing:0.5px;border:1.5px solid var(--accent);padding:6px 16px;border-radius:100px;transition:background 0.3s,color 0.3s" onmouseover="this.style.background=\'#5C7252\';this.style.color=\'#F2F4F0\'" onmouseout="this.style.background=\'transparent\';this.style.color=\'#5C7252\'">View on GitHub &#8599;</a></div>';
+  }
+  html += '</div></div>';
+  return html;
+}
+
+function projRender() {
+  const pillsEl = document.getElementById('projPills');
+  const gridEl = document.getElementById('projGrid');
+  if(!pillsEl || !gridEl) return;
+
+  const filters = [
+    {id:'all', label:'All'},
+    {id:'ml', label:'Machine Learning'},
+    {id:'stats', label:'Statistical Modeling'},
+    {id:'analytics', label:'Analytics'}
+  ];
+
+  pillsEl.innerHTML = filters.map(function(f) {
+    return '<button class="pill '+(projFilter===f.id?'active':'')+'" onclick="projNav(\''+f.id+'\')">'+f.label+'</button>';
+  }).join('');
+
+  const filtered = projFilter === 'all' ? projectsData : projectsData.filter(function(p) { return p.filter === projFilter; });
+  const staggers = ['s2','s3','s4','s5','s6'];
+  gridEl.innerHTML = filtered.map(function(p, i) {
+    return projBuildCard(p, staggers[i % staggers.length]);
+  }).join('');
+}
+
+function projNav(f) {
+  projFilter = f;
+  projRender();
+}
+
+pages.projects = () => `
+<div class="page" style="max-width:900px;margin:0 auto">
+  <div class="stagger s1">
+    <div class="section-label">
+      <span class="section-num">02.5</span><div class="section-line"></div><span class="section-name">Projects</span>
+    </div>
+    <h2 class="page-title">Projects</h2>
+    <div class="title-accent"></div>
+  </div>
+
+  <div class="pill-row stagger s2" id="projPills"></div>
+  <div id="projGrid" style="margin-top:24px;display:grid;gap:14px"></div>
+</div>
+`;
+
 // RESEARCH
 pages.research = () => `
 <div class="page" style="max-width:860px;margin:0 auto">
@@ -756,7 +882,7 @@ pages.research = () => `
         </div>
         <div style="margin-top:18px">
           <a href="https://arxiv.org/abs/2512.13142" target="_blank" style="display:inline-flex;align-items:center;gap:6px;color:var(--accent);font-size:12px;font-weight:600;text-decoration:none;letter-spacing:0.5px;border:1.5px solid var(--accent);padding:7px 18px;border-radius:100px;transition:background 0.3s,color 0.3s" onmouseover="this.style.background='#5C7252';this.style.color='#F2F4F0'" onmouseout="this.style.background='transparent';this.style.color='#5C7252'">
-            Read on arXiv ↗
+            Read on arXiv &#8599;
           </a>
         </div>
       </div>
@@ -902,7 +1028,7 @@ function buildVolItem(year, title, org, desc, photo, link, stagger) {
   html += '<p style="font-size:12px;color:var(--accent);font-weight:600;margin-top:2px">'+org+'</p>';
   html += '<p class="card-desc" style="margin-top:6px">'+desc+'</p>';
   if(photo) html += '<img src="'+photo+'" alt="'+title+'" style="margin-top:10px;width:100%;max-width:320px;height:200px;object-fit:cover;border-radius:10px;border:1px solid #C4CCBE40" />';
-  if(link) html += '<div style="margin-top:10px"><a href="'+link+'" target="_blank" style="display:inline-flex;align-items:center;gap:6px;color:var(--accent);font-size:12px;font-weight:600;text-decoration:none;letter-spacing:0.5px;border:1.5px solid var(--accent);padding:6px 16px;border-radius:100px;transition:background 0.3s,color 0.3s" onmouseover="this.style.background=\'#5C7252\';this.style.color=\'#F2F4F0\'" onmouseout="this.style.background=\'transparent\';this.style.color=\'#5C7252\'">View on Instagram ↗</a></div>';
+  if(link) html += '<div style="margin-top:10px"><a href="'+link+'" target="_blank" style="display:inline-flex;align-items:center;gap:6px;color:var(--accent);font-size:12px;font-weight:600;text-decoration:none;letter-spacing:0.5px;border:1.5px solid var(--accent);padding:6px 16px;border-radius:100px;transition:background 0.3s,color 0.3s" onmouseover="this.style.background=\'#5C7252\';this.style.color=\'#F2F4F0\'" onmouseout="this.style.background=\'transparent\';this.style.color=\'#5C7252\'">View on Instagram &#8599;</a></div>';
   html += '</div></div>';
   return html;
 }
@@ -919,11 +1045,11 @@ pages.sports = () => `
   </div>
 
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-top:36px">
-    ${buildActivity('🏸','Badminton','s2')}
-    ${buildActivity('🏓','Pickleball','s3')}
-    ${buildActivity('🥾','Hiking','s4')}
-    ${buildActivity('🛶','Kayaking','s5')}
-    ${buildActivity('🧗','Rock Climbing','s6')}
+    ${buildActivity('\uD83C\uDFF8','Badminton','s2')}
+    ${buildActivity('\uD83C\uDFD3','Pickleball','s3')}
+    ${buildActivity('\uD83E\uDD7E','Hiking','s4')}
+    ${buildActivity('\uD83D\uDEF6','Kayaking','s5')}
+    ${buildActivity('\uD83E\uDDD7','Rock Climbing','s6')}
   </div>
 </div>
 `;
@@ -946,9 +1072,9 @@ function addFooter() {
           <a href="https://linkedin.com/in/malavikamampally" class="btn-secondary">LinkedIn</a>
           <a href="https://github.com/malavika-vm" class="btn-secondary">GitHub</a>
           <a href="mailto:malavikamampally@gmail.com" class="btn-secondary">Email</a>
-          <a href="resume.pdf" target="_blank" class="btn-primary">Resume ↗</a>
+          <a href="resume.pdf" target="_blank" class="btn-primary">Resume &#8599;</a>
         </div>
-        <div style="margin-top:40px;font-size:10px;color:#7E8A7A60;letter-spacing:3px">© 2025 MVM</div>
+        <div style="margin-top:40px;font-size:10px;color:#7E8A7A60;letter-spacing:3px">&copy; 2025 MVM</div>
       </div>
     </footer>
   `;
@@ -960,6 +1086,7 @@ function renderPage() {
   content.innerHTML = pages[currentPage]();
   addFooter();
   if(currentPage === 'education') edRenderDynamic();
+  if(currentPage === 'projects') projRender();
 }
 
 function init() {
